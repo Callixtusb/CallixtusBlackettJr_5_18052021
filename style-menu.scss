@@ -1,0 +1,527 @@
+@import 'sass/Utils/variables';
+@import 'sass/Utils/mixins';
+
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+   margin: 0 auto;
+   font-family: $font-text;
+}
+
+// HEADER //
+header {
+    @include header;
+    }
+
+
+// MENU //
+.menu {
+
+    position: relative;
+    z-index: 98;
+    top: 125px;
+    width: 100%;
+    background-color: #ffff;
+  
+    @include breakpoint (laptop) {
+     position: fixed;
+     top: 18px;
+     z-index: 99;
+     background-color: transparent;
+     }
+  
+     &__wrapper {
+      width: 100%;
+     }
+  
+     &__content {
+        width: 100%;
+        margin: auto;
+     } 
+  
+     .introduction {
+        text-align: center;
+        z-index: 101;
+     }
+  
+     &__buttons {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 25px;
+      padding-left: 0px;
+      margin-top: 45px;
+      margin-bottom: 30px;
+      width: 100%;
+      list-style-type: none;
+      // Start counter //
+      counter-reset: list;
+          //..........................................
+    @include breakpoint (laptop) {
+  
+      justify-content: flex-end;
+      gap: 15px;
+      margin-top: 15px;
+      margin-bottom: 55px;
+     }
+     }
+  
+     li:hover {
+      filter: drop-shadow(10px 12px 10px #0800002e);
+     }
+  
+     li {
+      // Increment counter on each list item //
+      counter-increment: list;
+      @include Drop-shadow-pour-btn-de-selection;
+      transition: all 1s;
+     }
+  
+    //  li::before {
+    //   // Use counter to display the current number //
+    //   content: " " counter(list) " ";
+    //   border-radius: 50%;
+    //   padding: 3px 4.3px 3px 6px;
+    //   width: 45px;
+    //   vertical-align: middle;
+    //   color: $primary-color;
+    //   background-color: $primary-color;
+    //   font-size: 11px;
+    //   position: relative;
+    //   z-index: 99;
+    //   right: -3%;
+    //  }
+  
+      //Home icon//
+     .fa-shopping-cart {
+      @include icon-btn-fonctionnement-std;
+      transition: all 1s;
+  
+         @include breakpoint (laptop) {
+           padding: 21px 10px 22px 25px;
+  
+          }
+     }
+  
+      //Home button text//
+     &__home {
+      @include btn-fonctionnement-std;    
+      transition: all 1s;
+  
+         @include breakpoint (laptop) {
+           padding: 20px 55px 20px 10px;
+  
+           }
+     }
+  
+      //Produits icon//
+     .fa-list-ul {
+      @include icon-btn-fonctionnement-std;
+      transition: all 1s;
+  
+         @include breakpoint (laptop) {
+           padding: 21px 10px 22px 25px;
+           }
+     }
+  
+      //Produits button text//
+     &__produits {
+      @include btn-fonctionnement-std;
+      transition: all 1s;
+  
+      @include breakpoint (laptop) {
+        padding: 20px 55px 20px 10px;
+        }
+     }
+  
+      //Panier icon
+     .fa-store {
+      @include icon-btn-fonctionnement-std;
+      transition: all 1s;
+  
+         @include breakpoint (laptop) {
+           padding: 21px 10px 22px 25px;
+  
+           }
+     }
+  
+      //Panier button text//
+     &__panier {
+      @include btn-fonctionnement-std;
+      transition: all 1s;
+  
+      @include breakpoint (laptop) {
+        padding: 20px 55px 20px 10px;
+  
+        }
+     }
+  
+      // HOME HOVER //
+     .fa-shopping-cart:hover {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+     li:hover .menu__home {
+      background-color: $title-bkgnd-color;
+     }
+   
+     .menu__home:hover {
+      background-color: $title-bkgnd-color;
+     }
+  
+     li:hover .fa-shopping-cart {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+      // PRODUITS HOVER //
+     .fa-list-ul:hover {
+      background-color: $title-bkgnd-color;
+      color: #9356DC;
+     }
+  
+     li:hover .menu__produits {
+      background-color: $title-bkgnd-color;
+     }
+  
+     .menu__produits:hover {
+      background-color: $title-bkgnd-color;
+     }
+  
+     li:hover .fa-list-ul {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+      // PANIER HOVER //
+     .fa-store:hover {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+     li:hover .menu__panier {
+      background-color: $title-bkgnd-color;
+     }
+     
+     .menu__panier:hover {
+      background-color: $title-bkgnd-color;
+     }
+  
+     li:hover .fa-store {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+  }
+
+
+
+.produit {
+margin-top: 200px;
+
+.namePriceCombo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.VoirProduit {
+    display: block;
+    // margin: 0 auto;
+    text-align: center;
+    margin: 30px 0px 20px 0px;
+    margin-left: 33%;
+    margin-right: 33%;
+    width: 33%;
+}
+
+#produit__list--template, #camera__list--template, #meuble__list--template {
+background-color: #f6f6f6;
+width: 330px;
+margin: auto;
+}
+
+#produit__list--post, #camera__list--post, #meuble__list--post {
+display: block;
+margin: 0 auto;
+width: 310px;
+
+}
+
+.blockProduct {
+    margin-bottom: 10px;
+}
+
+
+.produit__wrapper, .camera__wrapper, .meuble__wrapper {
+  width: 100%;
+  padding-top: 32px;
+  max-width: 1224px;
+
+  margin: auto;
+  @include breakpoint (laptop) {
+    background-color: transparent;
+
+
+    }
+
+    .produit__content, .camera__content, .meuble__content {
+       width: 90%;
+       margin: auto;
+
+       // Tablet portrait & Desktop ////////////////////////////
+       @include breakpoint (laptop) {
+       display: flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+       justify-content: space-evenly;
+       align-content: baseline;
+    }
+    }
+    
+    //PRODUCT PAGES TITLES//
+
+    .produit__title-and-heart-bloc--palette { 
+        @include menu__title-and-heart-bloc;
+        
+        .heart_inline--palette {  
+           left: 91%;  
+        }
+
+         // Tablet portrait & Desktop ////////////////////////////
+        @include breakpoint (laptop) {
+
+        .heart_inline--palette {  
+           left: -4%;  
+        }
+    }
+    }
+
+    .produit__title-and-heart-bloc--enchantee { 
+        @include menu__title-and-heart-bloc;
+
+        .heart_inline--enchantee {  
+           left: 92%;  
+        }
+
+        // Tablet portrait & Desktop ////////////////////////////
+        @include breakpoint (laptop) {
+            
+        .heart_inline--enchantee {  
+            left: -4%;
+        }
+        }  
+    }
+
+    .produit__title-and-heart-bloc--francaise { 
+        @include menu__title-and-heart-bloc;
+
+        .heart_inline--francaise {  
+            left: 92%;  
+        }
+
+        // Tablet portrait & Desktop ////////////////////////////
+        @include breakpoint (laptop) {
+
+        .heart_inline--francaise {  
+            left: -4%;  
+        }
+        }  
+    }
+
+    .produit__title-and-heart-bloc--delice { 
+        @include menu__title-and-heart-bloc;
+
+        .heart_inline--delice {  
+           left: 92%;  
+        }
+
+         // Tablet portrait & Desktop ////////////////////////////
+        @include breakpoint (laptop) {
+
+        .heart_inline--delice {  
+            left: -4%; 
+        }
+        }  
+    }
+
+
+    // MENU CONTENT BLOCKS //
+
+    .produit__content__bloc, .camera__content__bloc, .meuble__content__bloc {
+         // Tablet portrait & Desktop ////////////////////////////
+        @include breakpoint (laptop) {
+           width: 330px;     
+        } 
+    }
+
+    .produit__content__list, .camera__content__list, .meuble__content__list { 
+        @include menu_content_list;
+        // Tablet portrait & Desktop ////////////////////////////
+        @include breakpoint (laptop) {
+           justify-self: flex-start;
+           width: 100%;
+           margin-top: 30px;  
+        } 
+    }
+
+    //  PRODUITS-DESCRIPTIONS //
+
+    .produit__title, .camera__title, .meuble__title { 
+        @include menu_titles;
+    }
+
+    .produit__desc, .camera__desc, .meuble__desc { 
+        @include menu_descriptions;
+    }
+
+    .produit__desc p, .camera__desc p, .meuble__desc p { 
+        margin: 3px;
+    }
+
+    .produit__desc a, .camera__desc a, .meuble__desc a { 
+        text-decoration: none; 
+        color: black;
+    }
+
+    .produit__price-bloc, .camera__price-bloc, .meuble__price-bloc { 
+        @include menu_prices;
+    }
+
+
+
+    // ANIMATION - ROLLING CHECH-ICON //
+
+    //produit slab - Green cover indention//
+    .remplissage {
+        background-color: #99e2d0;
+        width: 0px;
+        position: absolute;
+        right: 0px;
+        padding: 17px 0px 17px 0px;
+        height: 100.5%;
+        bottom: 0px;
+        border-radius: 0px 15px 15px 0px;
+        transition: all 0.4s linear 0s;
+    }
+
+    .produit__desc--animation:hover .remplissage {
+        width: 60px;
+        padding: 17px 10px 17px 10px;
+    }
+
+    //produit slab - Price indention//
+    .price {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+	      transition: all 0.4s linear 0s;
+    }
+
+    .produit__desc--animation:hover .price {
+        text-indent: 60px;
+    }
+
+    //produit slab - Text Ellipsis//
+    .produit__textdescription {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+
+    //produit slab - Rolling Icon indention//
+    .remplissage-content:after {
+        content:"\f058";
+        font-family: FontAwesome;
+        font-size: 25px;
+        opacity: 0;
+        color: #ffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 0px;
+        position: absolute;
+        right: 30px;
+        height: 100%;
+        bottom: 0px;
+        text-align: center;
+        animation: left-to-right 0.5s;
+        transition: opacity .6s;
+    }
+
+    .produit__desc--animation:hover .remplissage-content:after {
+        right: 30px;
+        opacity: 2;
+        animation: rolling 0.5s linear 0s;
+    }
+
+    @keyframes rolling {
+      0% {transform: translateX(30px) rotateZ(360deg);}
+      33% {transform: translateX(20px) rotateZ(300deg);}
+      66% {transform: translateX(10px) rotateZ(180deg);}
+      100% {transform: translateX(0px) rotateZ(0deg);}
+    }
+
+    @keyframes left-to-right {
+      0% {transform: translateX(0px) rotateZ(0deg);}
+      33% {transform: translateX(10px) rotateZ(180deg);}
+      66% {transform: translateX(20px) rotateZ(300deg);}
+      100% {transform: translateX(30px) rotateZ(360deg);}
+    }
+
+    // ANIMATION - Menu progressive appearance //
+    .produit__content--entrees {
+        animation: fadein 1s;
+    }
+
+    @keyframes fadein {  
+        from { opacity:0; } 
+        to { opacity:1; }  
+    }
+
+    .produit__content--plats {
+        animation: fadein 2.5s;
+    }
+
+    @keyframes fadein {  
+        from { opacity:0; } 
+        to { opacity:1; }  
+    }
+
+    .produit__content--desserts {
+        animation: fadein 3.5s;
+    }
+
+    @keyframes fadein {  
+        from { opacity:0; } 
+        to { opacity:1; }  
+    }
+
+}
+}
+
+    
+// FOOTER //
+
+Footer {
+    @include footer;
+    // Tablet portrait & Desktop - 768 and up ////////////////////////////
+    @include breakpoint (laptop) {
+
+       ul {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+          padding-left: 0;
+       }
+    }
+
+
+}
+

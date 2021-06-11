@@ -1,0 +1,280 @@
+@import 'sass/Utils/variables';
+@import 'sass/Utils/mixins';
+
+
+*{
+   box-sizing: border-box;
+}
+
+body {
+   margin: 0 auto;
+   font-family: $font-text;
+}
+
+// HEADER //
+header {
+@include header;
+}
+
+// MENU //
+.menu {
+
+  position: relative;
+  z-index: 98;
+  top: 125px;
+  width: 100%;
+  background-color: #ffff;
+
+  @include breakpoint (laptop) {
+   position: fixed;
+   top: 80px;
+   z-index: 99;
+   background-color: transparent;
+   }
+
+   &__wrapper {
+    width: 100%;
+   }
+
+   &__content {
+      width: 100%;
+      margin: auto;
+   } 
+
+   .introduction {
+      text-align: center;
+      z-index: 101;
+   }
+
+   &__buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 25px;
+    padding-left: 0px;
+    margin-top: 45px;
+    margin-bottom: 30px;
+    width: 100%;
+    list-style-type: none;
+    // Start counter //
+    counter-reset: list;
+        //..........................................
+  @include breakpoint (laptop) {
+
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 15px;
+    margin-bottom: 55px;
+   }
+   }
+
+   li:hover {
+    filter: drop-shadow(10px 12px 10px #0800002e);
+   }
+
+   li {
+    // Increment counter on each list item //
+    counter-increment: list;
+    @include Drop-shadow-pour-btn-de-selection;
+    transition: all 1s;
+   }
+
+   li::before {
+    // Use counter to display the current number //
+    content: " " counter(list) " ";
+    border-radius: 50%;
+    padding: 3px 4.3px 3px 6px;
+    width: 45px;
+    vertical-align: middle;
+    color: white;
+    background-color: $primary-color;
+    font-size: 11px;
+    position: relative;
+    z-index: 99;
+    right: -3%;
+   }
+
+    //Home icon//
+   .fa-shopping-cart {
+    @include icon-btn-fonctionnement-std;
+    transition: all 1s;
+
+       @include breakpoint (laptop) {
+         padding: 21px 10px 22px 25px;
+
+        }
+   }
+
+    //Home button text//
+   &__home {
+    @include btn-fonctionnement-std;    
+    transition: all 1s;
+
+       @include breakpoint (laptop) {
+         padding: 20px 55px 20px 10px;
+
+         }
+   }
+
+    //Produits icon//
+   .fa-list-ul {
+    @include icon-btn-fonctionnement-std;
+    transition: all 1s;
+
+       @include breakpoint (laptop) {
+         padding: 21px 10px 22px 25px;
+         }
+   }
+
+    //Produits button text//
+   &__produits {
+    @include btn-fonctionnement-std;
+    transition: all 1s;
+
+    @include breakpoint (laptop) {
+      padding: 20px 55px 20px 10px;
+      }
+   }
+
+    //Panier icon
+   .fa-store {
+    @include icon-btn-fonctionnement-std;
+    transition: all 1s;
+
+       @include breakpoint (laptop) {
+         padding: 21px 10px 22px 25px;
+
+         }
+   }
+
+    //Panier button text//
+   &__panier {
+    @include btn-fonctionnement-std;
+    transition: all 1s;
+
+    @include breakpoint (laptop) {
+      padding: 20px 55px 20px 10px;
+
+      }
+   }
+
+    // HOME HOVER //
+   .fa-shopping-cart:hover {
+    background-color: #f8ebfc;
+    color: $primary-color;
+   }
+
+   li:hover .menu__home {
+    background-color: #f8ebfc;
+   }
+ 
+   .menu__home:hover {
+    background-color: #f8ebfc;
+   }
+
+   li:hover .fa-shopping-cart {
+    background-color: #f8ebfc;
+    color: $primary-color;
+   }
+
+    // PRODUITS HOVER //
+   .fa-list-ul:hover {
+    background-color: #f8ebfc;
+    color: #9356DC;
+   }
+
+   li:hover .menu__produits {
+    background-color: #f8ebfc;
+   }
+
+   .menu__produits:hover {
+    background-color: #f8ebfc;
+   }
+
+   li:hover .fa-list-ul {
+    background-color: #f8ebfc;
+    color: $primary-color;
+   }
+
+    // PANIER HOVER //
+   .fa-store:hover {
+    background-color: #f8ebfc;
+    color: $primary-color;
+   }
+
+   li:hover .menu__panier {
+    background-color: #f8ebfc;
+   }
+   
+   .menu__panier:hover {
+    background-color: #f8ebfc;
+   }
+
+   li:hover .fa-store {
+    background-color: #f8ebfc;
+    color: $primary-color;
+   }
+
+}
+
+// RESTAURANTS //
+.produits {
+
+  margin-top: 180px;
+  @include breakpoint (laptop) {
+   margin-top: 180px;
+
+  }
+
+   &__wrapper {
+    max-width: 1224px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 8em;
+
+        // Tablet portrait & Desktop ////////////////////////////
+        @include breakpoint (laptop) {
+         margin-top: 300px
+        }
+   }
+      
+   h1 {      
+    margin-left: 5%;
+   }
+
+   &__content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 75px;
+    // Tablet portrait & Desktop ////////////////////////////
+    @include breakpoint (laptop) {
+    justify-content: center; 
+    max-width: 1224px;
+    width: 100%;
+
+   }
+   } 
+ 
+    @include restaurants__card;
+ }
+
+// FOOTER //
+Footer {
+  @include footer;
+  // Tablet portrait & Desktop ////////////////////////////
+   @include breakpoint (laptop) {
+      position: absolute;
+      bottom: 0px;
+     ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      padding-left: 0;
+     }
+   }
+}

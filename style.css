@@ -41,7 +41,7 @@ header .header__logo {
 @media screen and (min-width: 768px) {
   .menu {
     position: fixed;
-    top: 80px;
+    top: 18px;
     z-index: 99;
     background-color: transparent;
   }
@@ -59,6 +59,9 @@ header .header__logo {
 .menu .introduction {
   text-align: center;
   z-index: 101;
+  margin-top: 110px;
+  font-size: 20px;
+  line-height: -20px;
 }
 
 .menu__buttons {
@@ -105,20 +108,6 @@ header .header__logo {
           filter: drop-shadow(0px 3px 6px #4444442e);
   -webkit-transition: all 1s;
   transition: all 1s;
-}
-
-.menu li::before {
-  content: " " counter(list) " ";
-  border-radius: 50%;
-  padding: 3px 4.3px 3px 6px;
-  width: 45px;
-  vertical-align: middle;
-  color: white;
-  background-color: #9557e0;
-  font-size: 11px;
-  position: relative;
-  z-index: 99;
-  right: -3%;
 }
 
 .menu .fa-shopping-cart {
@@ -227,56 +216,56 @@ header .header__logo {
 }
 
 .menu .fa-shopping-cart:hover {
-  background-color: #f8ebfc;
+  background-color: #f3e9f1;
   color: #9557e0;
 }
 
 .menu li:hover .menu__home {
-  background-color: #f8ebfc;
+  background-color: #f3e9f1;
 }
 
 .menu .menu__home:hover {
-  background-color: #f8ebfc;
+  background-color: #f3e9f1;
 }
 
 .menu li:hover .fa-shopping-cart {
-  background-color: #f8ebfc;
+  background-color: #f3e9f1;
   color: #9557e0;
 }
 
 .menu .fa-list-ul:hover {
-  background-color: #f8ebfc;
+  background-color: #f3e9f1;
   color: #9356DC;
 }
 
 .menu li:hover .menu__produits {
-  background-color: #f8ebfc;
+  background-color: #f3e9f1;
 }
 
 .menu .menu__produits:hover {
-  background-color: #f8ebfc;
+  background-color: #f3e9f1;
 }
 
 .menu li:hover .fa-list-ul {
-  background-color: #f8ebfc;
+  background-color: #f3e9f1;
   color: #9557e0;
 }
 
 .menu .fa-store:hover {
-  background-color: #f8ebfc;
+  background-color: #f3e9f1;
   color: #9557e0;
 }
 
 .menu li:hover .menu__panier {
-  background-color: #f8ebfc;
+  background-color: #f3e9f1;
 }
 
 .menu .menu__panier:hover {
-  background-color: #f8ebfc;
+  background-color: #f3e9f1;
 }
 
 .menu li:hover .fa-store {
-  background-color: #f8ebfc;
+  background-color: #f3e9f1;
   color: #9557e0;
 }
 

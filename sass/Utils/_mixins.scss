@@ -113,7 +113,7 @@
 
 //Carte Restaurants - rubrique Restaurants (page d'accueil)//
 
-@mixin restaurants__card {
+@mixin produit__card {
   &__card {
     @include card-resto-general;   
     // Tablet portrait & Desktop ////////////////////////////
@@ -127,7 +127,6 @@
   &__text_heart_bloc {
     @include card-resto-text-heart-bloc;
   }
-
 
   &__nouveau--tck1 {
     @include card-resto-etiquette_nouveau;
@@ -144,7 +143,9 @@
   &__nouveau--tck4 {
     @include card-resto-etiquette_nouveau;
     position: absolute; opacity: 0;   
-  }            
+  }     
+  
+  @include Drop-shadow-pour-btn-de-selection;
 }
 
 
@@ -228,64 +229,50 @@
 //Footer - (All pages)//
 @mixin footer {
 
-  padding-bottom: 45px;
-  padding-top: 45px;
-  background-color: $footer-bkgnd-color;
-  position: absolute;
-  width: 100%;
-
-    
   .footer__wrapper {
-    max-width: 1224px;
-    margin: auto;
-    position: relative;
-    height: auto;
-    width: 100%;
+    // margin: auto;
+    // position: relative;
+    // height: auto;
+    padding: 25px 0;
+    background-color: #f3e9f1;
+
+
+    .footer__content {
+      width: 100%;
+        
+      }            
+    }
+
+.footer__main {
+            display: flex;
+            flex-direction: column;
+            // justify-content: flex-start;
+            // margin: 0;
+            list-style-type: none;
+            color: black;
+            // margin-bottom: 0;
+            // padding-left: 5%;
+            line-height: 0;
+
+              .footer__utensils,
+              .footer__hands-helping {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 12px;
+              }
+
+              .footer__contact {
+                text-decoration: none;
+                color: black;
+              }
+          }
+
+
   }
 
-  // .footer__content__title {
-  //   font-family: $font-logo-and-titles;
-  //   margin-left: 5%;
-  //   font-size: 1.1em;
-  //   font-weight: 100;
-  //   color: #ffff;
-  //   padding-top: 1.2em;
-  // }
-   
-     
-  ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin: 0;
-    list-style-type: none;
-    color: #ffff;
-    margin-bottom: 0;
-    padding-left: 5%;
-    line-height: 0;
 
-       .footer__utensils {
-         display: flex;
-         flex-wrap: wrap;
-         align-items: center;
-         gap: 12px;
-       }
-
-       .footer__hands-helping {
-         display: flex;
-         flex-wrap: wrap;
-         align-items: center;
-         gap: 12px;
-       }
-
-       .footer__contact {
-         text-decoration: none;
-         color: #ffff;
-       }
-  }           
-}
-
-
+ 
 @mixin page_header {
   header {
   @include header;
@@ -408,18 +395,18 @@
   margin-bottom: 18px;
 }
 
-@mixin menu_descriptions {
-  width: 100%;
-  border: 0px;
-  line-height: 1;
-  font-size: 14px;
-  // background-color: $title-bkgnd-color;
-  @include Drop-shadow-pour-btn-de-selection;
-  border-radius: 15px 15px 15px 15px;
-  padding: 10px 10px 10px 10px;
-  margin-bottom: 15px;
-  text-decoration: none; color: black;
-}
+// @mixin menu_descriptions {
+//   width: 100%;
+//   border: 0px;
+//   line-height: 1;
+//   font-size: 14px;
+//   // background-color: $title-bkgnd-color;
+//   @include Drop-shadow-pour-btn-de-selection;
+//   border-radius: 15px 15px 15px 15px;
+//   padding: 10px 10px 10px 10px;
+//   margin-bottom: 15px;
+//   text-decoration: none; color: black;
+// }
 
 @mixin menu_prices {
   display: flex;

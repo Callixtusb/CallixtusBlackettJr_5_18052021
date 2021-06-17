@@ -18,9 +18,10 @@ async function getProductData() {
                <h3 class="produit__name">${product.name}</h3>
                <p class="produit__price">${product.price / 100 + '€ '}</p>
            </div>
-           <img src="${product.imageUrl}" width="310" height="229" alt="${product.name}" class="produit_img"></img>
+           <div = class="produit__img_container">
+               <img src="${product.imageUrl}" alt="${product.name}" class="produit_img"></img>
+           </div>
            <button class="VoirProduit">Voir produit</button>
-           <span class="Line">_________________________________________________</span>
        </div>
      </a>
         `};
@@ -59,9 +60,10 @@ async function getCameraData() {
                <h3 class="produit__name">${product.name}</h3>
                <p class="produit__price">${product.price / 100 + '€ '}</p>
            </div>
-           <img src="${product.imageUrl}" width="310" height="229" alt="${product.name}" class="produit_img"></img>
+           <div = class="produit__img_container">
+               <img src="${product.imageUrl}" alt="${product.name}" class="produit_img"></img>
+           </div>
            <button class="VoirProduit">Voir produit</button>
-           <span class="Line">_________________________________________________</span>
        </div>
      </a>
         `};
@@ -99,9 +101,10 @@ async function getMeubleData() {
                <h3 class="produit__name">${product.name}</h3>
                <p class="produit__price">${product.price / 100 + '€ '}</p>
            </div>
-           <img src="${product.imageUrl}" width="310" height="229" alt="${product.name}" class="produit_img"></img>
+           <div = class="produit__img_container">
+               <img src="${product.imageUrl}" alt="${product.name}" class="produit_img"></img>
+           </div>
            <button class="VoirProduit">Voir produit</button>
-           <span class="Line">_________________________________________________</span>
        </div>
      </a>
         `};

@@ -1,0 +1,380 @@
+@import 'sass/Utils/variables';
+@import 'sass/Utils/mixins';
+
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+   font-family: $font-text;
+   margin: 0px;
+
+}
+//Header//////////////////........................................
+header {
+    @include header;
+    margin-left: 0px;
+    }
+
+// MENU //
+.menu {
+    position: relative;
+    z-index: 98;
+    top: 125px;
+    width: 100%;
+    background-color: #ffff;
+  
+    @include breakpoint (laptop) {
+     position: fixed;
+     top: 18px;
+     z-index: 99;
+     background-color: transparent;
+     }
+  
+     &__wrapper {
+      width: 100%;
+     }
+  
+     &__content {
+        width: 100%;
+     } 
+  
+     .introduction {
+        text-align: center;
+        z-index: 101;
+     }
+  
+     &__buttons {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 25px;
+      padding-left: 0px;
+      margin-top: 45px;
+      margin-bottom: 30px;
+      width: 100%;
+      list-style-type: none;
+      // Start counter //
+      counter-reset: list;
+    //..........................................
+    @include breakpoint (laptop) {
+  
+      justify-content: flex-end;
+      gap: 15px;
+      margin-top: 15px;
+      margin-bottom: 55px;
+     }
+     }
+  
+     li:hover {
+      filter: drop-shadow(10px 12px 10px #0800002e);
+     }
+  
+     li {
+      // Increment counter on each list item //
+      counter-increment: list;
+      @include Drop-shadow-pour-btn-de-selection;
+      transition: all 1s;
+     }
+  
+      //Home icon//
+     .fa-shopping-cart {
+      @include icon-btn-fonctionnement-std;
+      transition: all 1s;
+  
+         @include breakpoint (laptop) {
+           padding: 21px 10px 22px 25px;
+  
+          }
+     }
+  
+      //Home button text//
+     &__home {
+      @include btn-fonctionnement-std;    
+      transition: all 1s;
+  
+         @include breakpoint (laptop) {
+           padding: 20px 55px 20px 10px;
+  
+           }
+     }
+  
+      //Produits icon//
+     .fa-list-ul {
+      @include icon-btn-fonctionnement-std;
+      transition: all 1s;
+  
+         @include breakpoint (laptop) {
+           padding: 21px 10px 22px 25px;
+           }
+     }
+  
+      //Produits button text//
+     &__produits {
+      @include btn-fonctionnement-std;
+      transition: all 1s;
+  
+      @include breakpoint (laptop) {
+        padding: 20px 55px 20px 10px;
+        }
+     }
+  
+      //Panier icon
+     .fa-store {
+      @include icon-btn-fonctionnement-std;
+      transition: all 1s;
+  
+         @include breakpoint (laptop) {
+           padding: 21px 10px 22px 25px;
+  
+           }
+     }
+  
+      //Panier button text//
+     &__panier {
+      @include btn-fonctionnement-std;
+      transition: all 1s;
+  
+      @include breakpoint (laptop) {
+        padding: 20px 55px 20px 10px;
+  
+        }
+     }
+  
+      // HOME HOVER //
+     .fa-shopping-cart:hover {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+     li:hover .menu__home {
+      background-color: $title-bkgnd-color;
+     }
+   
+     .menu__home:hover {
+      background-color: $title-bkgnd-color;
+     }
+  
+     li:hover .fa-shopping-cart {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+      // PRODUITS HOVER //
+     .fa-list-ul:hover {
+      background-color: $title-bkgnd-color;
+      color: #9356DC;
+     }
+  
+     li:hover .menu__produits {
+      background-color: $title-bkgnd-color;
+     }
+  
+     .menu__produits:hover {
+      background-color: $title-bkgnd-color;
+     }
+  
+     li:hover .fa-list-ul {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+      // PANIER HOVER //
+     .fa-store:hover {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+     li:hover .menu__panier {
+      background-color: $title-bkgnd-color;
+     }
+     
+     .menu__panier:hover {
+      background-color: $title-bkgnd-color;
+     }
+  
+     li:hover .fa-store {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+  }
+     
+//Container////////////////........................................
+.container,
+.container--state_zip,
+.container--exp_cvv {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    // flex-wrap: wrap;
+    margin-left: -5px;
+    // margin-right: -14px;
+    margin-top: 0px;
+  }
+  
+  .container {
+    max-width: 1224px;
+    margin: auto;
+    margin-top: 150px;
+  }
+  
+  .text_cart {
+    margin-left: 0px;
+    margin-bottom: 30px;
+  }
+
+  .container__wrapper--cart,
+  .container__wrapper--block_pmt,
+  .container__content--state,
+  .container__content--zip,
+  .container__content--exp,
+  .container__content--cvv {
+    padding: 0 26px;
+  }
+  
+// Tablet portrait & Desktop ////////////////////////////
+@include breakpoint (laptop) {
+
+    .container__wrapper--cart,
+    .container__wrapper--block_pmt {
+        padding: 0 100px;
+    }
+
+}
+  .container__content--billing, 
+  .container__content--payment {
+    padding-left: 0px;
+    padding-right: 24px;
+  }
+
+  .container__wrapper--cart {
+    margin-bottom: 20px;
+  }
+
+  .container__wrapper--forms, 
+  .container__content--cart {
+    background-color: #dddcdc;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+  }
+  
+  .container__wrapper--forms {
+    margin-bottom: 20px;
+    margin-bottom: 180px;
+    padding-bottom: 40px;
+  }
+
+  input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  label {
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+  }
+  
+  .fa-cc-visa {
+    color:navy;
+  }
+
+  .fa-cc-amex {
+    color:blue;
+  }
+
+  .fa-cc-mastercard {
+    color:red;
+  }
+
+  .fa-cc-discover{
+    color:orange;
+  }
+
+  .btn {
+    background-color: #f6f6f6;
+    color: $primary-color;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid rgb(196, 195, 195);
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    filter: drop-shadow(0px 2px 5px #0800002e);
+    transition: all 1s;
+  }
+  
+  .btn:hover {
+    background-color: $title-bkgnd-color;
+  }
+  
+
+
+  .product_name {
+    text-decoration: none;
+  }
+
+.price_qty,
+.price_total {
+    color: black;
+    float: right;
+}
+
+  span.price {
+    float: right;
+    color: grey;
+  }
+  
+
+  @media (max-width: 768px) {
+    .container {
+        // margin-left: -3px;
+        // margin-right: -25px;
+        width: 100%;
+    }
+    .container__wrapper--cart {
+      margin-bottom: 20px;
+    }
+    .container__wrapper--forms {
+        margin-bottom: 20px;
+      }
+  }
+
+
+ // FOOTER //
+ footer {
+    @include footer;
+    
+    // Tablet portrait & Desktop ////////////////////////////
+     @include breakpoint (laptop) {
+
+        .footer__main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: baseline;
+        // padding-left: 0;
+        width: 100%;
+       }
+     }
+
+     @include breakpoint (laptop) {
+        position: fixed;
+        width: 100%;
+        bottom: 0px;
+     }
+
+  }

@@ -56,11 +56,6 @@ header .header__logo {
   margin: auto;
 }
 
-.menu .introduction {
-  text-align: center;
-  z-index: 101;
-}
-
 .menu__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -346,6 +341,7 @@ header .header__logo {
 
 .produit {
   margin-top: 200px;
+  margin-bottom: 150px;
 }
 
 .produit .namePriceCombo {
@@ -363,16 +359,10 @@ header .header__logo {
 .produit .VoirProduit {
   display: block;
   text-align: center;
-  margin: 30px 0px 20px 0px;
+  margin: 0px 0px 20px 0px;
   margin-left: 33%;
   margin-right: 33%;
   width: 33%;
-}
-
-.produit #produit__list--template, .produit #camera__list--template, .produit #meuble__list--template {
-  background-color: #f6f6f6;
-  width: 330px;
-  margin: auto;
 }
 
 .produit #produit__list--post, .produit #camera__list--post, .produit #meuble__list--post {
@@ -382,7 +372,22 @@ header .header__logo {
 }
 
 .produit .blockProduct {
-  margin-bottom: 10px;
+  padding: 10px 10px 10px 10px;
+  background-color: #f6f6f6;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.produit .produit_img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 193px;
+  width: 100%;
+}
+
+.produit .produit__img_container {
+  height: 229px;
+  width: 100%;
 }
 
 .produit .produit__wrapper, .produit .camera__wrapper, .produit .meuble__wrapper {
@@ -748,20 +753,6 @@ header .header__logo {
   margin-bottom: 18px;
 }
 
-.produit .produit__wrapper .produit__desc, .produit .produit__wrapper .camera__desc, .produit .produit__wrapper .meuble__desc, .produit .camera__wrapper .produit__desc, .produit .camera__wrapper .camera__desc, .produit .camera__wrapper .meuble__desc, .produit .meuble__wrapper .produit__desc, .produit .meuble__wrapper .camera__desc, .produit .meuble__wrapper .meuble__desc {
-  width: 100%;
-  border: 0px;
-  line-height: 1;
-  font-size: 14px;
-  -webkit-filter: drop-shadow(0px 3px 6px #4444442e);
-          filter: drop-shadow(0px 3px 6px #4444442e);
-  border-radius: 15px 15px 15px 15px;
-  padding: 10px 10px 10px 10px;
-  margin-bottom: 15px;
-  text-decoration: none;
-  color: black;
-}
-
 .produit .produit__wrapper .produit__desc p, .produit .produit__wrapper .camera__desc p, .produit .produit__wrapper .meuble__desc p, .produit .camera__wrapper .produit__desc p, .produit .camera__wrapper .camera__desc p, .produit .camera__wrapper .meuble__desc p, .produit .meuble__wrapper .produit__desc p, .produit .meuble__wrapper .camera__desc p, .produit .meuble__wrapper .meuble__desc p {
   margin: 3px;
 }
@@ -784,220 +775,16 @@ header .header__logo {
   padding-right: 12px;
 }
 
-.produit .produit__wrapper .remplissage, .produit .camera__wrapper .remplissage, .produit .meuble__wrapper .remplissage {
-  background-color: #99e2d0;
-  width: 0px;
-  position: absolute;
-  right: 0px;
-  padding: 17px 0px 17px 0px;
-  height: 100.5%;
-  bottom: 0px;
-  border-radius: 0px 15px 15px 0px;
-  -webkit-transition: all 0.4s linear 0s;
-  transition: all 0.4s linear 0s;
+footer .footer__wrapper {
+  padding: 25px 0;
+  background-color: #f3e9f1;
 }
 
-.produit .produit__wrapper .produit__desc--animation:hover .remplissage, .produit .camera__wrapper .produit__desc--animation:hover .remplissage, .produit .meuble__wrapper .produit__desc--animation:hover .remplissage {
-  width: 60px;
-  padding: 17px 10px 17px 10px;
-}
-
-.produit .produit__wrapper .price, .produit .camera__wrapper .price, .produit .meuble__wrapper .price {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  -webkit-transition: all 0.4s linear 0s;
-  transition: all 0.4s linear 0s;
-}
-
-.produit .produit__wrapper .produit__desc--animation:hover .price, .produit .camera__wrapper .produit__desc--animation:hover .price, .produit .meuble__wrapper .produit__desc--animation:hover .price {
-  text-indent: 60px;
-}
-
-.produit .produit__wrapper .produit__textdescription, .produit .camera__wrapper .produit__textdescription, .produit .meuble__wrapper .produit__textdescription {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: inline-block;
-}
-
-.produit .produit__wrapper .remplissage-content:after, .produit .camera__wrapper .remplissage-content:after, .produit .meuble__wrapper .remplissage-content:after {
-  content: "\f058";
-  font-family: FontAwesome;
-  font-size: 25px;
-  opacity: 0;
-  color: #ffff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 0px;
-  position: absolute;
-  right: 30px;
-  height: 100%;
-  bottom: 0px;
-  text-align: center;
-  -webkit-animation: left-to-right 0.5s;
-          animation: left-to-right 0.5s;
-  -webkit-transition: opacity .6s;
-  transition: opacity .6s;
-}
-
-.produit .produit__wrapper .produit__desc--animation:hover .remplissage-content:after, .produit .camera__wrapper .produit__desc--animation:hover .remplissage-content:after, .produit .meuble__wrapper .produit__desc--animation:hover .remplissage-content:after {
-  right: 30px;
-  opacity: 2;
-  -webkit-animation: rolling 0.5s linear 0s;
-          animation: rolling 0.5s linear 0s;
-}
-
-@-webkit-keyframes rolling {
-  0% {
-    -webkit-transform: translateX(30px) rotateZ(360deg);
-            transform: translateX(30px) rotateZ(360deg);
-  }
-  33% {
-    -webkit-transform: translateX(20px) rotateZ(300deg);
-            transform: translateX(20px) rotateZ(300deg);
-  }
-  66% {
-    -webkit-transform: translateX(10px) rotateZ(180deg);
-            transform: translateX(10px) rotateZ(180deg);
-  }
-  100% {
-    -webkit-transform: translateX(0px) rotateZ(0deg);
-            transform: translateX(0px) rotateZ(0deg);
-  }
-}
-
-@keyframes rolling {
-  0% {
-    -webkit-transform: translateX(30px) rotateZ(360deg);
-            transform: translateX(30px) rotateZ(360deg);
-  }
-  33% {
-    -webkit-transform: translateX(20px) rotateZ(300deg);
-            transform: translateX(20px) rotateZ(300deg);
-  }
-  66% {
-    -webkit-transform: translateX(10px) rotateZ(180deg);
-            transform: translateX(10px) rotateZ(180deg);
-  }
-  100% {
-    -webkit-transform: translateX(0px) rotateZ(0deg);
-            transform: translateX(0px) rotateZ(0deg);
-  }
-}
-
-@-webkit-keyframes left-to-right {
-  0% {
-    -webkit-transform: translateX(0px) rotateZ(0deg);
-            transform: translateX(0px) rotateZ(0deg);
-  }
-  33% {
-    -webkit-transform: translateX(10px) rotateZ(180deg);
-            transform: translateX(10px) rotateZ(180deg);
-  }
-  66% {
-    -webkit-transform: translateX(20px) rotateZ(300deg);
-            transform: translateX(20px) rotateZ(300deg);
-  }
-  100% {
-    -webkit-transform: translateX(30px) rotateZ(360deg);
-            transform: translateX(30px) rotateZ(360deg);
-  }
-}
-
-@keyframes left-to-right {
-  0% {
-    -webkit-transform: translateX(0px) rotateZ(0deg);
-            transform: translateX(0px) rotateZ(0deg);
-  }
-  33% {
-    -webkit-transform: translateX(10px) rotateZ(180deg);
-            transform: translateX(10px) rotateZ(180deg);
-  }
-  66% {
-    -webkit-transform: translateX(20px) rotateZ(300deg);
-            transform: translateX(20px) rotateZ(300deg);
-  }
-  100% {
-    -webkit-transform: translateX(30px) rotateZ(360deg);
-            transform: translateX(30px) rotateZ(360deg);
-  }
-}
-
-.produit .produit__wrapper .produit__content--entrees, .produit .camera__wrapper .produit__content--entrees, .produit .meuble__wrapper .produit__content--entrees {
-  -webkit-animation: fadein 1s;
-          animation: fadein 1s;
-}
-
-@-webkit-keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.produit .produit__wrapper .produit__content--plats, .produit .camera__wrapper .produit__content--plats, .produit .meuble__wrapper .produit__content--plats {
-  -webkit-animation: fadein 2.5s;
-          animation: fadein 2.5s;
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.produit .produit__wrapper .produit__content--desserts, .produit .camera__wrapper .produit__content--desserts, .produit .meuble__wrapper .produit__content--desserts {
-  -webkit-animation: fadein 3.5s;
-          animation: fadein 3.5s;
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-Footer {
-  padding-bottom: 45px;
-  padding-top: 45px;
-  background-color: #353535;
-  position: absolute;
+footer .footer__wrapper .footer__content {
   width: 100%;
 }
 
-Footer .footer__wrapper {
-  max-width: 1224px;
-  margin: auto;
-  position: relative;
-  height: auto;
-  width: 100%;
-}
-
-Footer ul {
+footer .footer__main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1005,18 +792,13 @@ Footer ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  margin: 0;
   list-style-type: none;
-  color: #ffff;
-  margin-bottom: 0;
-  padding-left: 5%;
+  color: black;
   line-height: 0;
 }
 
-Footer ul .footer__utensils {
+footer .footer__main .footer__utensils,
+footer .footer__main .footer__hands-helping {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1028,25 +810,13 @@ Footer ul .footer__utensils {
   gap: 12px;
 }
 
-Footer ul .footer__hands-helping {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 12px;
-}
-
-Footer ul .footer__contact {
+footer .footer__main .footer__contact {
   text-decoration: none;
-  color: #ffff;
+  color: black;
 }
 
 @media screen and (min-width: 768px) {
-  Footer ul {
+  footer .footer__main {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1057,10 +827,17 @@ Footer ul .footer__contact {
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    padding-left: 0;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
   }
 }
-/*# sourceMappingURL=style-menu.css.map */
+
+@media screen and (min-width: 768px) {
+  footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+  }
+}
+/*# sourceMappingURL=style-product_list.css.map */

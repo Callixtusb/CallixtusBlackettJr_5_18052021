@@ -150,9 +150,6 @@ console.log(product);
 const id = product.get('_id');
 console.log(id);
 
-const idPres = product.has('_id');
-console.log(idPres);
-
 //........Recuperation de des donnees via fetch method................................
 const fetchedStream = fetch('http://localhost:3000/api/teddies/' + id);
 fetchedStream.then((response) => response.json())

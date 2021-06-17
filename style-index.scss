@@ -2,9 +2,11 @@
 @import 'sass/Utils/mixins';
 
 
-*{
-   box-sizing: border-box;
-}
+
+
+
+
+
 
 body {
    margin: 0 auto;
@@ -17,8 +19,15 @@ header {
 }
 
 // MENU //
-.menu {
+.introduction {
+   text-align: center;
+   z-index: 101;
+   margin-bottom: 80px;
+   font-size: 20px;
+   line-height: -20px;
+}
 
+.menu {
    position: relative;
    z-index: 98;
    top: 125px;
@@ -40,14 +49,7 @@ header {
        width: 100%;
        margin: auto;
     } 
- 
-    .introduction {
-       text-align: center;
-       z-index: 101;
-       margin-top: 110px;
-       font-size: 20px;
-       line-height: -20px;
-    }
+
  
     &__buttons {
      display: flex;
@@ -82,21 +84,6 @@ header {
      @include Drop-shadow-pour-btn-de-selection;
      transition: all 1s;
     }
- 
-   //  li::before {
-   //   // Use counter to display the current number //
-   //   content: " " counter(list) " ";
-   //   border-radius: 50%;
-   //   padding: 3px 4.3px 3px 6px;
-   //   width: 45px;
-   //   vertical-align: middle;
-   //   color: $primary-color;
-   //   background-color: $primary-color;
-   //   font-size: 11px;
-   //   position: relative;
-   //   z-index: 99;
-   //   right: -3%;
-   //  }
  
      //Home icon//
     .fa-shopping-cart {
@@ -221,12 +208,13 @@ header {
  
  }
 
-// RESTAURANTS //
+// PRODUITS ////////
 .produits {
 
   margin-top: 180px;
   @include breakpoint (laptop) {
-   margin-top: 180px;
+   margin-top: 180px;    
+   margin-bottom: 50px;
 
   }
 
@@ -239,7 +227,7 @@ header {
 
         // Tablet portrait & Desktop ////////////////////////////
         @include breakpoint (laptop) {
-         margin-top: 300px
+         margin-top: 200px
         }
    }
       
@@ -262,22 +250,31 @@ header {
    }
    } 
  
-    @include restaurants__card;
+    @include produit__card;
+
  }
 
+
 // FOOTER //
-Footer {
-  @include footer;
-  // Tablet portrait & Desktop ////////////////////////////
-   @include breakpoint (laptop) {
-      position: absolute;
+footer {
+   @include footer;
+
+   // Tablet portrait & Desktop ////////////////////////////
+    @include breakpoint (laptop) {
+
+       .footer__main {
+       display: flex;
+       flex-direction: row;
+       justify-content: space-evenly;
+       align-items: baseline;
+       bottom: 0px;
+      }
+    }  
+
+    @include breakpoint (laptop) {
+      position: fixed;
+      width: 100%;
       bottom: 0px;
-     ul {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-items: center;
-      padding-left: 0;
-     }
    }
-}
+
+ }

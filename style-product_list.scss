@@ -19,7 +19,6 @@ header {
 
 // MENU //
 .menu {
-
     position: relative;
     z-index: 98;
     top: 125px;
@@ -42,11 +41,6 @@ header {
         margin: auto;
      } 
   
-     .introduction {
-        text-align: center;
-        z-index: 101;
-     }
-  
      &__buttons {
       display: flex;
       flex-direction: row;
@@ -60,7 +54,7 @@ header {
       list-style-type: none;
       // Start counter //
       counter-reset: list;
-          //..........................................
+    //..........................................
     @include breakpoint (laptop) {
   
       justify-content: flex-end;
@@ -80,21 +74,6 @@ header {
       @include Drop-shadow-pour-btn-de-selection;
       transition: all 1s;
      }
-  
-    //  li::before {
-    //   // Use counter to display the current number //
-    //   content: " " counter(list) " ";
-    //   border-radius: 50%;
-    //   padding: 3px 4.3px 3px 6px;
-    //   width: 45px;
-    //   vertical-align: middle;
-    //   color: $primary-color;
-    //   background-color: $primary-color;
-    //   font-size: 11px;
-    //   position: relative;
-    //   z-index: 99;
-    //   right: -3%;
-    //  }
   
       //Home icon//
      .fa-shopping-cart {
@@ -220,7 +199,7 @@ header {
   }
 
 
-
+// PRODUITS LISTING ////////
 .produit__card {
  margin-top: 200px;
  width: 100%;
@@ -293,6 +272,7 @@ header {
 
 .produit {
 margin-top: 200px;
+margin-bottom: 150px;
 
 .namePriceCombo {
     display: flex;
@@ -304,17 +284,17 @@ margin-top: 200px;
     display: block;
     // margin: 0 auto;
     text-align: center;
-    margin: 30px 0px 20px 0px;
+    margin: 0px 0px 20px 0px;
     margin-left: 33%;
     margin-right: 33%;
     width: 33%;
 }
 
-#produit__list--template, #camera__list--template, #meuble__list--template {
-background-color: #f6f6f6;
-width: 330px;
-margin: auto;
-}
+// #produit__list--template, #camera__list--template, #meuble__list--template {
+// background-color: #f6f6f6;
+// width: 330px;
+// margin: auto;
+// }
 
 #produit__list--post, #camera__list--post, #meuble__list--post {
 display: block;
@@ -323,9 +303,28 @@ width: 310px;
 
 }
 
+
+
+
 .blockProduct {
-    margin-bottom: 10px;
+    padding: 10px 10px 10px 10px;
+    background-color: #f6f6f6;
+    border-radius: 15px;
+    margin-bottom: 30px;
 }
+
+.produit_img {
+    object-fit: cover;
+    height: 193px;
+    width: 100%;
+}
+
+.produit__img_container {
+    height: 229px;
+    width: 100%;
+}
+
+
 
 
 .produit__wrapper, .camera__wrapper, .meuble__wrapper {
@@ -352,10 +351,6 @@ width: 310px;
     }
     }
     
-
-
-
-
     //PRODUCT PAGES TITLES//
 
     .produit__title-and-heart-bloc--palette { 
@@ -448,9 +443,9 @@ width: 310px;
         @include menu_titles;
     }
 
-    .produit__desc, .camera__desc, .meuble__desc { 
-        @include menu_descriptions;
-    }
+    // .produit__desc, .camera__desc, .meuble__desc { 
+    //     @include menu_descriptions;
+    // }
 
     .produit__desc p, .camera__desc p, .meuble__desc p { 
         margin: 3px;
@@ -465,135 +460,36 @@ width: 310px;
         @include menu_prices;
     }
 
-
-
-    // ANIMATION - ROLLING CHECH-ICON //
-
-    //produit slab - Green cover indention//
-    .remplissage {
-        background-color: #99e2d0;
-        width: 0px;
-        position: absolute;
-        right: 0px;
-        padding: 17px 0px 17px 0px;
-        height: 100.5%;
-        bottom: 0px;
-        border-radius: 0px 15px 15px 0px;
-        transition: all 0.4s linear 0s;
-    }
-
-    .produit__desc--animation:hover .remplissage {
-        width: 60px;
-        padding: 17px 10px 17px 10px;
-    }
-
-    //produit slab - Price indention//
-    .price {
-        white-space: nowrap;
-        text-overflow: ellipsis;
-	      transition: all 0.4s linear 0s;
-    }
-
-    .produit__desc--animation:hover .price {
-        text-indent: 60px;
-    }
-
-    //produit slab - Text Ellipsis//
-    .produit__textdescription {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: inline-block;
-    }
-
-    //produit slab - Rolling Icon indention//
-    .remplissage-content:after {
-        content:"\f058";
-        font-family: FontAwesome;
-        font-size: 25px;
-        opacity: 0;
-        color: #ffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 0px;
-        position: absolute;
-        right: 30px;
-        height: 100%;
-        bottom: 0px;
-        text-align: center;
-        animation: left-to-right 0.5s;
-        transition: opacity .6s;
-    }
-
-    .produit__desc--animation:hover .remplissage-content:after {
-        right: 30px;
-        opacity: 2;
-        animation: rolling 0.5s linear 0s;
-    }
-
-    @keyframes rolling {
-      0% {transform: translateX(30px) rotateZ(360deg);}
-      33% {transform: translateX(20px) rotateZ(300deg);}
-      66% {transform: translateX(10px) rotateZ(180deg);}
-      100% {transform: translateX(0px) rotateZ(0deg);}
-    }
-
-    @keyframes left-to-right {
-      0% {transform: translateX(0px) rotateZ(0deg);}
-      33% {transform: translateX(10px) rotateZ(180deg);}
-      66% {transform: translateX(20px) rotateZ(300deg);}
-      100% {transform: translateX(30px) rotateZ(360deg);}
-    }
-
-    // ANIMATION - Menu progressive appearance //
-    .produit__content--entrees {
-        animation: fadein 1s;
-    }
-
-    @keyframes fadein {  
-        from { opacity:0; } 
-        to { opacity:1; }  
-    }
-
-    .produit__content--plats {
-        animation: fadein 2.5s;
-    }
-
-    @keyframes fadein {  
-        from { opacity:0; } 
-        to { opacity:1; }  
-    }
-
-    .produit__content--desserts {
-        animation: fadein 3.5s;
-    }
-
-    @keyframes fadein {  
-        from { opacity:0; } 
-        to { opacity:1; }  
-    }
-
 }
 }
 
     
 // FOOTER //
-
-Footer {
+footer {
     @include footer;
-    // Tablet portrait & Desktop - 768 and up ////////////////////////////
-    @include breakpoint (laptop) {
-
-       ul {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-evenly;
-          align-items: center;
-          padding-left: 0;
+    
+    // Tablet portrait & Desktop ////////////////////////////
+     @include breakpoint (laptop) {
+    
+        .footer__main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: baseline;
+        // padding-left: 0;
        }
 
-    }
+     }
 
-}
+     @include breakpoint (laptop) {
+        position: fixed;
+        width: 100%;
+        bottom: 0px;
+     }
+
+
+
+  }
+
+
 

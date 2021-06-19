@@ -1,161 +1,174 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <script src="https://kit.fontawesome.com/a458a90062.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style-cart.css">
-    <title>Orinoco - Product description</title>
-    <meta name="description" content="Orinoco... !">
-</head>
-<body>
-<!-- Header -->
-<header>
-    <div class="header__wrapper">
-     <div class="header__content">
-        <a href="#" class="home"><img src="images/logo/Orinoco_logo.jpg" class="header__logo" alt="Logo Orinoco"/></a> 
-     </div>
-   </div>
-  </header>
-  <!-- Menu -->
-<nav class="menu">
-    <div class="menu__wrapper">
-      <div class="menu__content">
-        <ol class="menu__buttons">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style-cart.css" />
+    <title>Orinoco - Page panier</title>
+    <meta name="description" content="Orinoco... !" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header__wrapper">
+        <div class="header__content">
+          <a href="#" class="home"><img src="images/logo/Orinoco_logo.jpg" class="header__logo" alt="Logo Orinoco" /></a>
+        </div>
+      </div>
+    </header>
+    <!-- Menu -->
+    <nav class="menu">
+      <div class="menu__wrapper">
+        <div class="menu__content">
+          <ol class="menu__buttons">
             <li class="menu__buttons--prod">
-                <i class="fas fa-store"></i>
-                <a href="index.html" class="menu__home">Accueil</a>
+              <i class="fas fa-store"></i>
+              <a href="index.html" class="menu__home">Accueil</a>
             </li>
             <li>
-                <i class="fas fa-list-ul"></i>
-                <a href="product-list.html" class="menu__produits">Produits</a>
+              <i class="fas fa-list-ul"></i>
+              <a href="product-list.html" class="menu__produits">Produits</a>
             </li>
             <li>
               <i class="fas fa-shopping-cart"></i>
-                <a href="cart.html" class="menu__panier">Panier</a>
-            </li> 
-        </ol>
+              <a href="cart.html" class="menu__panier">Panier</a>
+            </li>
+          </ol>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
     <!-- Cart details and checkout-->
     <div class="container">
-        <div class="container__wrapper--block_pmt">
-          <div class="container__wrapper--forms">
-            <form action="#">
-     <!-- Forms -->     
-              <div class="container__content--forms">
-                <div class="container__content--billing">
-                  <h3>Billing Address</h3>
-                  <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                  <input type="text" id="fname" name="firstname" placeholder="Callixtus Blackett Jr">
-                  <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                  <input type="text" id="email" name="email" placeholder="c.blackettjr@example.com">
-                  <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                  <input type="text" id="adr" name="address" placeholder="213 Jefferson ave">
-                  <label for="city"><i class="fa fa-institution"></i> City</label>
-                  <input type="text" id="city" name="city" placeholder="Bklyn, New York">
-      
-                  <div class="container--state_zip">
-                    <div class="container__content--state">
-                      <label for="state">State</label>
-                      <input type="text" id="state" name="state" placeholder="NY">
-                    </div>
-                    <div class="container__content--zip">
-                      <label for="zip">Zip</label>
-                      <input type="text" id="zip" name="zip" placeholder="11216">
-                    </div>
+      <div class="container__wrapper--block_pmt">
+        <div class="container__wrapper--forms">
+          <form action="#">
+            <!-- Forms -->
+            <div class="container__content--forms">
+              <div class="container__content--billing">
+                <h3>Billing Address</h3>
+                <label for="fname"><i class="fa fa-user"></i> Nom complet</label>
+                <input type="text" id="fname" name="firstname" placeholder="Callixtus Blackett Jr" />
+                <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                <input type="text" id="email" name="email" placeholder="c.blackettjr@example.com" />
+                <label for="adr"><i class="fa fa-address-card-o"></i> Adresse</label>
+                <input type="text" id="adr" name="adresse" placeholder="213 Jefferson ave" />
+                <label for="Ville"><i class="fa fa-institution"></i> Ville</label>
+                <input type="text" id="Ville" name="Ville" placeholder="Bklyn, New York" />
+
+                <div class="container--state_zip">
+                  <div class="container__content--state">
+                    <label for="state">Region</label>
+                    <input type="text" id="state" name="state" placeholder="NY" />
+                  </div>
+                  <div class="container__content--zip">
+                    <label for="zip">Code postal</label>
+                    <input type="text" id="zip" name="zip" placeholder="11216" />
                   </div>
                 </div>
-      
-                <div class="container__content--payment">
-                  <h3>Payment</h3>
-                  <label for="fname">Accepted Cards</label>
-                  <div class="icon-container">
-                    <i class="fa fa-cc-visa"></i>
-                    <i class="fa fa-cc-amex"></i>
-                    <i class="fa fa-cc-mastercard"></i>
-                    <i class="fa fa-cc-discover"></i>
-                  </div>
-                  <label for="cname">Name on Card</label>
-                  <input type="text" id="cname" name="cardname" placeholder="C. Blackett Jr">
-                  <label for="ccnum">Credit card number</label>
-                  <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-                  <label for="expmonth">Exp Month</label>
-                  <input type="text" id="expmonth" name="expmonth" placeholder="September">
-      
-                  <div class="container--exp_cvv">
-                    <div class="container__content--exp">
-                      <label for="expyear">Exp Year</label>
-                      <input type="text" id="expyear" name="expyear" placeholder="2018">
-                    </div>
-                    <div class="container__content--cvv">
-                      <label for="cvv">CVV</label>
-                      <input type="text" id="cvv" name="cvv" placeholder="352">
-                    </div>
-                  </div>
-                </div>
-      
               </div>
-              <label>
-                <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-              </label>
 
-              <input type="submit" value="Continue to checkout" class="btn">
-            </form>
-          </div>
+              <div class="container__content--payment">
+                <h3>Payment</h3>
+                <label for="fname">Cartes accepté</label>
+                <div class="icon-container">
+                  <i class="fa fa-cc-visa"></i>
+                  <i class="fa fa-cc-amex"></i>
+                  <i class="fa fa-cc-mastercard"></i>
+                  <i class="fa fa-cc-discover"></i>
+                </div>
+                <label for="cname">Nom sur Carte</label>
+                <input type="text" id="cname" name="cardname" placeholder="C. Blackett Jr" />
+                <label for="ccnum">Numéro de carte</label>
+                <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" />
+                <label for="expmonth">Mois Exp</label>
+                <input type="text" id="expmonth" name="expmonth" placeholder="September" />
+
+                <div class="container--exp_cvv">
+                  <div class="container__content--exp">
+                    <label for="expyear">Année Exp</label>
+                    <input type="text" id="expyear" name="expyear" placeholder="2018" />
+                  </div>
+                  <div class="container__content--cvv">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="352" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <label> <input type="checkbox" checked="checked" name="sameadr" /> Adresse de livraison pareil que l'adresse de facturation </label>
+
+            <input type="submit" value="Continue to checkout" class="btn" />
+          </form>
         </div>
-      
+      </div>
 
-        <div class="container__wrapper--cart">
-         <div class="text_cart"><p>Revoir et confirmer votre commande.</p></div>
-          <div class="container__content--cart">
-            <h4>Cart
-              <span class="price_qty">
-                <i class="fa fa-shopping-cart"></i>
-                <b>4</b>
-              </span>
-            </h4>
-            <p><a href="#" class="product_name">Product 1</a> <span class="price">15€</span></p>
-            <p><a href="#" class="product_name">Product 2</a> <span class="price">5€</span></p>
-            <p><a href="#" class="product_name">Product 3</a> <span class="price">8€</span></p>
-            <p><a href="#" class="product_name">Product 4</a> <span class="price">2€</span></p>
-            <hr>
-            <p>Total <span class="price_total"><b>30€</b></span></p>
+      <div class="container__wrapper--cart">
+        <div class="text_cart"><p>Revoir et confirmer votre commande.</p></div>
+        <div class="container__content--cart">
+          <h4 class="container__produits--qty">           
+            Produits sélectionnés :
+            <div class="produits_qty">
+
+  <!-- prodInCartQty insert here-->  
+
+            </div>
+          </h4>
+            <p class="cartDetailsTitles">
+              <span class="titleProdName"><b>Name</b></span> 
+              <span class="titleColor"><b>Color</b></span>
+              <span class="titleQty"><b>Quantity</b></span>
+              <span class="titlePrice"><b>Price</b></span>
+              <span class="titleSupprimer"><b>Supprimer</b></span>
+            </p>
+          <hr>
+          <div class="container__recap--in-Cart">
+
+    <!-- Product Cart detail insertions here-->              
+         
+          </div>
+          <hr />
+          <div>
+            <p class="cartTotalPrice">
+              <!-- Total <span class="price_total"><b>30€</b></span> -->
+                <span class="titleTotal">Total</span> 
+                <span class=" "><b> </b></span>
+                <span class="titleTotalQty"><b> </b></span>
+                <span class="price_total"><b>30€</b></span>
+            </p>
           </div>
         </div>
       </div>
+    </div>
     <!-- Footer -->
-<footer class="ftr">
-    <div class="footer__wrapper">
-      <nav class="footer__content">
-        <ul class="footer__main">
+    <footer class="ftr">
+      <div class="footer__wrapper">
+        <nav class="footer__content">
+          <ul class="footer__main">
             <li class="footer__utensils">
               <i class="fas fa-address-card"></i>
-                <p>A propos</p>
+              <p>A propos</p>
             </li>
             <li class="footer__hands-helping">
-                <i class="fas fa-hands-helping"></i>
-                <p>Devenir partenaire</p>
+              <i class="fas fa-hands-helping"></i>
+              <p>Devenir partenaire</p>
             </li>
             <li>
-                <p>Mentions légales</p>
+              <p>Mentions légales</p>
             </li>
             <li>
               <a class="footer__contact" href="mailto:callixtusb@gmail.com"><p>Contact</p></a>
             </li>
-        </ul>  
-      </nav>
-    </div>    
-</footer> 
+          </ul>
+        </nav>
+      </div>
+    </footer>
 
- <script src="./js/cart.js"></script>
-
-
-</body>
+    <script src="./js/cart.js"></script>
+  </body>
 </html>

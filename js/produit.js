@@ -171,12 +171,25 @@ const productDetails = `
             <h1 class="name"><span>${product.name}</span></h1>
             <p class="price"><strong>Price : </strong><span>${product.price / 100 + ' €'}</span></p>
             <p class="description"><strong>Description : </strong><span>${product.description}</span></p>
-        <form>
-            <label for="product_color"><strong>Choose a color :</strong></label>
-               <select name="product_color" id="theColorSpot">
+         <div>
+            <form>
+                <label for="product_color"><strong>Choose a color :</strong></label>
+                <select name="product_color" id="theColorSpot">
 
-               </select>        
-        </form>
+                </select>        
+            </form>
+            <br>
+            <form>
+            <label for="quantity"><strong>Quantity :</strong></label>
+            <select name="quantity" id="qtyChoice">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            </select>
+            </form>
+        </div>
             <button id="addToCart" type="submit " name="ajouterToCart">Add to cart</button>
     </div>
     </div>
@@ -185,9 +198,6 @@ const productDetails = `
 
 const container = document.querySelector('.container');
 container.innerHTML = productDetails;
-
-
-
 
 
 ////.......Set Quantity of color choices in the dropdown........./////..//////.....
@@ -201,7 +211,7 @@ for(let j = 0; j < colordropdwnQty.length; j++) {
     colorQtyStructure = 
        colorQtyStructure + 
             `
-            <option value="${[j]}">${colordropdwnQty[j]}</option>
+            <option value="${colordropdwnQty[j]}">${colordropdwnQty[j]}</option>
             `;
 
     // console.log(colorQtyStructure);
@@ -211,6 +221,14 @@ const formSelect = document.querySelector('#theColorSpot');
 formSelect.innerHTML = colorQtyStructure;
 
 console.log(formSelect);
+
+///...Set up quantity of individual products...//////..............
+
+
+
+
+
+
 
 
 //.................CART...................///////..................
@@ -223,15 +241,15 @@ btnSendSelection.addEventListener("click", (e) => {
     e.preventDefault();
 
         ///....Customer's selection.......///////......
-        const clientChoice = formName.value;
-        console.log(clientChoice);
+        const clientColorChoice = formName.value;
+        console.log(clientColorChoice);
 
         //.... Data elements to be retrieved from the form for confirmation........//////.......///
         const prodDetails = {
             prodName: product.name,
             productID: product._id,
-            product_color: clientChoice,
-            quatity: 2,
+            product_color: clientColorChoice,
+            quantity: 2,
             Price: prodPrice
         };
         console.log(prodDetails);
@@ -248,26 +266,37 @@ btnSendSelection.addEventListener("click", (e) => {
 
         /////....Transfer selected product data from form/btn to local storage (this must be in a variable)...../////....///./////...
         ////But first we must check if a copy of the data is not already in the local Storage (using the Boolean effect - if there is somthing, it will return "true").
-        /// RULE... Arr/Obj---> thru--JSON.stringify---> to tranfer data to local Storage.
+        /// RULE... Arr/Obj---> thru--JSON.stringify---> to transfer data to local Storage.
         /// RULE... local Storage---> thru--JSON.parse---> to get Arr/Obj from local Storage.
-        let prodToLocalStorage = JSON.parse(localStorage.getItem("productToOrder"));
+        
+        //Creation of variable in which the selected keys and values will be inserted:
+        let prodInLocalStorage = JSON.parse(localStorage.getItem("productToOrder"));
         // console.log(prodToLocalStorage);
 
-        if(prodToLocalStorage) {   //..checks if item is already in local storage. Comes back 'false/null'... true if not....
-            prodToLocalStorage.push(prodDetails);
+        if(prodInLocalStorage) {   //..checks if item is already in local storage. Comes back 'false/null'... true if not....
+            prodInLocalStorage.push(prodDetails);
             //.....Setup to send variable storage to local storage.....
-            localStorage.setItem("productToOrder", JSON.stringify(prodToLocalStorage));
+            localStorage.setItem("productToOrder", JSON.stringify(prodInLocalStorage));
             confirmationMessage ();
-            console.log(prodToLocalStorage);
+            console.log(prodInLocalStorage);
 
 
         } else {
-            prodToLocalStorage = [];
-            prodToLocalStorage.push(prodDetails);
+            prodInLocalStorage = [];
+            prodInLocalStorage.push(prodDetails);
             //.....Setup to send variable storage to local storage.....
-            localStorage.setItem("productToOrder", JSON.stringify(prodToLocalStorage));
+            localStorage.setItem("productToOrder", JSON.stringify(prodInLocalStorage));
             confirmationMessage ();
-            console.log(prodToLocalStorage);
+            console.log(prodInLocalStorage);
+
+        //     prodInLocalStorage.forEach(item => {
+        //         if(product.name == item.name){
+        //             product.quantity = item.quanity += 1;
+        //         } else {
+        //             prodInLocalStorage.push(product)
+        //         }
+
+        //     });
         }
 
 
@@ -279,6 +308,10 @@ btnSendSelection.addEventListener("click", (e) => {
 });
 
 
+
+// module.export {
+//     prodDetails
+// };
 
 
 

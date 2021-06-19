@@ -226,6 +226,30 @@ header {
     margin-bottom: 30px;
   }
 
+  .container__produits--qty {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .produits_qty {
+    color: blueviolet;
+  }
+
+  .panierVideMessage {
+    color: blueviolet;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .total__qty {
+    margin-left: 10px;
+  }
+
+  .cartDetails, .cartDetailsTitles {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .container__wrapper--cart,
   .container__wrapper--block_pmt,
   .container__content--state,
@@ -260,6 +284,10 @@ header {
     padding: 5px 20px 15px 20px;
     border: 1px solid lightgrey;
     border-radius: 3px;
+  }
+
+  .titleSupprimer {
+    color: #dddcdc;
   }
   
   .container__wrapper--forms {

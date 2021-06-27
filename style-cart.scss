@@ -62,8 +62,8 @@ header {
     @include breakpoint (laptop) {
   
       justify-content: flex-end;
-      gap: 15px;
-      margin-top: 15px;
+      // gap: 15px;
+      margin-top: 26px;
       margin-bottom: 55px;
      }
      }
@@ -79,13 +79,13 @@ header {
       transition: all 1s;
      }
   
-      //Home icon//
+     //Home icon//
      .fa-shopping-cart {
       @include icon-btn-fonctionnement-std;
       transition: all 1s;
   
          @include breakpoint (laptop) {
-           padding: 21px 0px 22px 25px;
+           padding: 10px 3px 11px 10px;
   
           }
      }
@@ -96,7 +96,7 @@ header {
       transition: all 1s;
   
          @include breakpoint (laptop) {
-           padding: 20px 55px 20px 10px;
+           padding: 9px 15px 9px 10px;
   
            }
      }
@@ -107,7 +107,7 @@ header {
       transition: all 1s;
   
          @include breakpoint (laptop) {
-           padding: 21px 10px 22px 25px;
+           padding: 10px 0px 11px 10px;;
            }
      }
   
@@ -117,7 +117,7 @@ header {
       transition: all 1s;
   
       @include breakpoint (laptop) {
-        padding: 20px 55px 20px 10px;
+        padding: 9px 15px 9px 10px;
         }
      }
   
@@ -127,7 +127,7 @@ header {
       transition: all 1s;
   
          @include breakpoint (laptop) {
-           padding: 21px 10px 22px 25px;
+           padding: 10px 0px 11px 10px;
   
            }
      }
@@ -138,7 +138,7 @@ header {
       transition: all 1s;
   
       @include breakpoint (laptop) {
-        padding: 20px 55px 20px 5px;
+        padding: 9px 15px 9px 0px;
   
         }
      }
@@ -242,7 +242,7 @@ header {
 
 
     .total__qty {
-    margin-right: 15px;
+    margin-right: 10px;
     color: blueviolet;
   }
 

@@ -26,7 +26,7 @@ header .header__logo {
 }
 
 .total__qty {
-  margin-right: 15px;
+  margin-right: 10px;
   color: blueviolet;
 }
 
@@ -91,8 +91,7 @@ header .header__logo {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
-    gap: 15px;
-    margin-top: 15px;
+    margin-top: 26px;
     margin-bottom: 55px;
   }
 }
@@ -122,7 +121,7 @@ header .header__logo {
 
 @media screen and (min-width: 768px) {
   .menu .fa-shopping-cart {
-    padding: 21px 10px 22px 25px;
+    padding: 10px 3px 11px 10px;
   }
 }
 
@@ -134,14 +133,14 @@ header .header__logo {
   background-color: #f6f6f6;
   border-radius: 0px 20px 20px 0px;
   padding: 5px 55px 5px 10px;
-  margin-left: -3%;
+  margin-left: -4%;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
 
 @media screen and (min-width: 768px) {
   .menu__home {
-    padding: 20px 55px 20px 10px;
+    padding: 9px 15px 9px 10px;
   }
 }
 
@@ -157,7 +156,7 @@ header .header__logo {
 
 @media screen and (min-width: 768px) {
   .menu .fa-list-ul {
-    padding: 21px 10px 22px 25px;
+    padding: 10px 0px 11px 10px;
   }
 }
 
@@ -169,14 +168,14 @@ header .header__logo {
   background-color: #f6f6f6;
   border-radius: 0px 20px 20px 0px;
   padding: 5px 55px 5px 10px;
-  margin-left: -3%;
+  margin-left: -4%;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
 
 @media screen and (min-width: 768px) {
   .menu__produits {
-    padding: 20px 55px 20px 10px;
+    padding: 9px 15px 9px 10px;
   }
 }
 
@@ -192,7 +191,7 @@ header .header__logo {
 
 @media screen and (min-width: 768px) {
   .menu .fa-store {
-    padding: 21px 10px 22px 25px;
+    padding: 10px 0px 11px 10px;
   }
 }
 
@@ -204,14 +203,14 @@ header .header__logo {
   background-color: #f6f6f6;
   border-radius: 0px 20px 20px 0px;
   padding: 5px 55px 5px 10px;
-  margin-left: -3%;
+  margin-left: -4%;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
 
 @media screen and (min-width: 768px) {
   .menu__panier {
-    padding: 20px 55px 20px 10px;
+    padding: 9px 15px 9px 0px;
   }
 }
 

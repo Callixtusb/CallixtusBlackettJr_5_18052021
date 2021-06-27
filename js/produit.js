@@ -30,7 +30,7 @@
 //                     .then((product) => {
 //                     console.log(product);
 
-//                     const prodName = product.name;
+//                     const name = product.name;
 //                     const prodPrice = product.price / 100 + ' Eur';
 //                     const prodDesc = product.description;
 //                     const coloris = product.colors;
@@ -100,7 +100,7 @@
 //                     .then((product) => {
 //                     console.log(product);
 
-//                     const prodName = product.name;
+//                     const name = product.name;
 //                     const prodPrice = product.price / 100 + ' Eur';
 //                     const prodDesc = product.description;
 //                     const coloris = product.colors;
@@ -157,7 +157,7 @@ fetchedStream.then((response) => response.json())
 .then((product) => {
 console.log(product);
 
-const prodName = product.name;
+const name = product.name;
 const prodPrice = product.price;
 const prodDesc = product.description;
 const coloris = product.colors;
@@ -261,8 +261,8 @@ btnSendSelection.addEventListener("click", (e) => {
 
         //.... Data elements to be retrieved from the form for confirmation........//////.......///
         const prodDetails = {
-            prodName: product.name,
-            productID: prodID,
+            name: product.name,
+            productId: prodID,
             product_color: clientColorChoice,
             quantity: quantityChoice,
             Price: prodPrice,
@@ -272,7 +272,7 @@ btnSendSelection.addEventListener("click", (e) => {
 
         ///...Setting up function of the "put in the cart" popup... this function is called below in the "If ()".
         const confirmationMessage = () => {
-            if (window.confirm(`           ${prodName} has been added to your cart. 
+            if (window.confirm(`           ${name} has been added to your cart. 
             Press OK to view cart details or Cancel to continue shopping`)) {
                 window.location.href = "cart.html";
             } else {
@@ -380,7 +380,7 @@ if (prodInLocalStorage === null || prodInLocalStorage == 0) {
 // const quantity = [];
 
 // for (a = 0; a < prodInLocalStorage.length; a += 1) {
-//     if (prodInLocalStorage[a].prodName === prodName) {
+//     if (prodInLocalStorage[a].name === name) {
 
 //         prodInLocalStorage[a].quantity += 1
 
@@ -426,7 +426,7 @@ if (prodInLocalStorage === null || prodInLocalStorage == 0) {
 // .then((product) => {
 //     console.log(product);
 
-//     const prodName = product.name;
+//     const name = product.name;
 //     const prodPrice = product.price / 100 + ' Eur';
 //     const prodDesc = product.description;
 //     const coloris = product.colors;
@@ -525,14 +525,14 @@ if (prodInLocalStorage === null || prodInLocalStorage == 0) {
 // let i = 0;
     
 // const prodImg = results[i].imageUrl;
-// const prodName = results[i].name;
+// const name = results[i].name;
 // const prodPrice = results[i].price / 100 + " Eur";
 // const prodDesc = results[i].description;
 // const coloris = results[i].colors;
 // //   const lenses = finalData[i].lenses;
 // //   const varnish = finalData[i].varnish;
 // console.log(prodImg);
-// console.log(prodName);
+// console.log(name);
 // console.log(prodPrice);
 // console.log(prodDesc);
 // console.log(coloris);
@@ -605,14 +605,14 @@ if (prodInLocalStorage === null || prodInLocalStorage == 0) {
 
     
 //       const prodImg = finalData[0].imageUrl;
-//       const prodName = finalData[0].name;
+//       const name = finalData[0].name;
 //       const prodPrice = finalData[0].price / 100 + " Eur";
 //       const prodDesc = finalData[0].description;
 //       const coloris = finalData[0].colors;
 //     //   const lenses = finalData[i].lenses;
 //     //   const varnish = finalData[i].varnish;
 //       console.log(prodImg);
-//       console.log(prodName);
+//       console.log(name);
 //       console.log(prodPrice);
 //       console.log(prodDesc);
 //       console.log(coloris);

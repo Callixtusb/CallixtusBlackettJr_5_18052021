@@ -421,20 +421,28 @@ header {
     color: grey;
   }
 
-  #nameError, 
+  #firstNameError, 
+  #lastNameError,
   #emailError, 
-  #adrError, 
-  #villeError, 
-  #zipError, 
-  #regionError, 
-  #cnameError, 
-  #ccnumError, 
-  #expmonthError, 
-  #expyearError, 
-  #cvvError {
+  #addressError, 
+  #cityError {
+  // #zipError, 
+  // #regionError, 
+  // #cnameError, 
+  // #ccnumError, 
+  // #expmonthError, 
+  // #expyearError, 
+  // #cvvError 
     color: crimson;
   }
   
+  .btnCheckout {
+    margin: auto;
+    display: block;
+    margin-top: 45px;
+    padding: 10px;
+    font-size: 14px;
+  }
 
   @media (max-width: 768px) {
     .container {

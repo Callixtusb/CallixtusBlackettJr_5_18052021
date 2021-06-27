@@ -38,7 +38,7 @@ if (prodInLocalStorage === null || prodInLocalStorage == 0) {
 
         prodInCart = prodInCart + 
             `
-            <p class="cartDetails"><a href="#" class="product_name">${prodInLocalStorage[p].prodName}</a> 
+            <p class="cartDetails"><a href="#" class="product_name">${prodInLocalStorage[p].name}</a> 
             <span class="color">${prodInLocalStorage[p].product_color}</span>
             <span class="qty">${prodInLocalStorage[p].quantity}</span>
             <span class="price">${prodInLocalStorage[p].Price / 100 + ' €'}</span>
@@ -51,9 +51,9 @@ if (prodInLocalStorage === null || prodInLocalStorage == 0) {
             prodAddToCart.innerHTML = prodInCart;
 
  
-    console.log(prodInLocalStorage[p].prodName);                
+    console.log(prodInLocalStorage[p].name);                
     console.log(prodInLocalStorage[p].product_color);
-    console.log(prodInLocalStorage[p].productID);
+    console.log(prodInLocalStorage[p].productId);
 
     }
 
@@ -101,8 +101,8 @@ for (r = 0; r < btnSupprimer.length; r++) {
     // const button = btnSupprimer[r]
 
 //     // (for Option 2)
-    const itemID = prodInLocalStorage[r].productID;
-    // const itemModifID = prodInLocalStorage.productID;
+    const itemID = prodInLocalStorage[r].productId;
+    // const itemModifID = prodInLocalStorage.productId;
     console.log(itemID); 
     // console.log(itemModifID); 
 
@@ -114,7 +114,7 @@ for (r = 0; r < btnSupprimer.length; r++) {
         // btnSupprimerClicked.parentElement.remove()
 
 //         // Option 2 (working in console.log but need to refresh page for itrm to disappear)
-        prodInLocalStorage = prodInLocalStorage.filter(item => item.productID !== itemID);
+        prodInLocalStorage = prodInLocalStorage.filter(item => item.productId !== itemID);
         console.log(prodInLocalStorage);
         localStorage.setItem("productToOrder", JSON.stringify(prodInLocalStorage));
         window.location.href = "cart.html";
@@ -204,56 +204,24 @@ const showHtmlForm = () => {
 
         <div class="container__content--forms">
             <div class="container__content--billing">
-            <h3>Billing Address</h3>
-            <label for="fname"><i class="fa fa-user"></i> Nom complet</label><span id="nameError"></span>
-            <input type="text" id="fname" name="fullname" placeholder="Callixtus Blackett Jr" required/>
+            <h3>Coordonnées</h3>
+            <label for="firstName"><i class="fa fa-user"></i> Prénom</label><span id="firstNameError"></span>
+            <input type="text" id="firstName" name="firstName" placeholder="Callixtus" required/>
+
+            <label for="lastName"><i class="fa fa-user"></i> Nom</label><span id="lastNameError"></span>
+            <input type="text" id="lastName" name="lastName" placeholder="Blackett Jr" required/>
+
+            <label for="address"><i class="fa fa-address-card-o"></i> Adresse</label><span id="addressError"></span>
+            <input type="text" id="address" name="address" placeholder="213 Jefferson ave" required/>
+
+            <label for="city"><i class="fa fa-institution"></i> Ville</label><span id="cityError"></span>
+            <input type="text" id="city" name="city" placeholder="Bklyn, New York" required/>
+
             <label for="email"><i class="fa fa-envelope"></i> Email</label><span id="emailError"></span>
             <input type="text" id="email" name="email" placeholder="c.blackettjr@example.com" required/>
-            <label for="adr"><i class="fa fa-address-card-o"></i> Adresse</label><span id="adrError"></span>
-            <input type="text" id="adr" name="adresse" placeholder="213 Jefferson ave" required/>
-            <label for="Ville"><i class="fa fa-institution"></i> Ville</label><span id="villeError"></span>
-            <input type="text" id="ville" name="Ville" placeholder="Bklyn, New York" required/>
 
-            <div class="container--state_zip">
-                <div class="container__content--zip">
-                <label for="zip">Code postal</label><span id="zipError"></span>
-                <input type="text" id="zip" name="zip" placeholder="11216" required/>
-                </div>
-
-                <div class="container__content--state">
-                <label for="state">Region</label><span id="regionError"></span>
-                <input type="text" id="region" name="region" placeholder="NY" required/>
-                </div>
-            </div>
             </div>
 
-            <div class="container__content--payment">
-            <h3>Payment</h3>
-            <label for="fname">Cartes accepté</label>
-            <div class="icon-container">
-                <i class="fa fa-cc-visa"></i>
-                <i class="fa fa-cc-amex"></i>
-                <i class="fa fa-cc-mastercard"></i>
-                <i class="fa fa-cc-discover"></i>
-            </div>
-            <label for="cname">Nom sur Carte</label><span id="cnameError"></span>
-            <input type="text" id="cname" name="cardname" placeholder="C. Blackett Jr" />
-            <label for="ccnum">Numéro de carte</label><span id="ccnumError"></span>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111222233334444" />
-            <label for="expmonth">Mois Exp</label><span id="expmonthError"></span>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September" />
-
-            <div class="container--exp_cvv">
-                <div class="container__content--exp">
-                <label for="expyear">Année Exp</label><span id="expyearError"></span>
-                <input type="text" id="expyear" name="expyear" placeholder="2018" />
-                </div>
-                <div class="container__content--cvv">
-                <label for="cvv">CVV</label><span id="cvvError"></span>
-                <input type="text" id="cvv" name="cvv" placeholder="352" />
-                </div>
-            </div>
-            </div>
         </div>
         <label> <input type="checkbox" checked="checked" name="sameadr" /> Adresse de livraison pareil que l'adresse de facturation </label>
 
@@ -262,6 +230,7 @@ const showHtmlForm = () => {
         </form>
     </div>  
     
+
     `;
 
     containerCommandeForm.innerHTML = formStructure
@@ -269,6 +238,73 @@ const showHtmlForm = () => {
 };
 showHtmlForm();
 
+//*************************************************************** */
+/* <div class="container__wrapper--forms">
+
+<form>
+
+<div class="container__content--forms">
+    <div class="container__content--billing">
+    <h3>Billing Address</h3>
+    <label for="fname"><i class="fa fa-user"></i> Nom complet</label><span id="nameError"></span>
+    <input type="text" id="fname" name="fullname" placeholder="Callixtus Blackett Jr" required/>
+    <label for="email"><i class="fa fa-envelope"></i> Email</label><span id="emailError"></span>
+    <input type="text" id="email" name="email" placeholder="c.blackettjr@example.com" required/>
+    <label for="adr"><i class="fa fa-address-card-o"></i> Adresse</label><span id="adrError"></span>
+    <input type="text" id="adr" name="adresse" placeholder="213 Jefferson ave" required/>
+    <label for="Ville"><i class="fa fa-institution"></i> Ville</label><span id="villeError"></span>
+    <input type="text" id="ville" name="Ville" placeholder="Bklyn, New York" required/>
+
+    <div class="container--state_zip">
+        <div class="container__content--zip">
+        <label for="zip">Code postal</label><span id="zipError"></span>
+        <input type="text" id="zip" name="zip" placeholder="11216" required/>
+        </div>
+
+        <div class="container__content--state">
+        <label for="state">Region</label><span id="regionError"></span>
+        <input type="text" id="region" name="region" placeholder="NY" required/>
+        </div>
+    </div>
+    </div>
+
+    <div class="container__content--payment">
+    <h3>Payment</h3>
+    <label for="fname">Cartes accepté</label>
+    <div class="icon-container">
+        <i class="fa fa-cc-visa"></i>
+        <i class="fa fa-cc-amex"></i>
+        <i class="fa fa-cc-mastercard"></i>
+        <i class="fa fa-cc-discover"></i>
+    </div>
+    <label for="cname">Nom sur Carte</label><span id="cnameError"></span>
+    <input type="text" id="cname" name="cardname" placeholder="C. Blackett Jr" />
+    <label for="ccnum">Numéro de carte</label><span id="ccnumError"></span>
+    <input type="text" id="ccnum" name="cardnumber" placeholder="1111222233334444" />
+    <label for="expmonth">Mois Exp</label><span id="expmonthError"></span>
+    <input type="text" id="expmonth" name="expmonth" placeholder="September" />
+
+    <div class="container--exp_cvv">
+        <div class="container__content--exp">
+        <label for="expyear">Année Exp</label><span id="expyearError"></span>
+        <input type="text" id="expyear" name="expyear" placeholder="2018" />
+        </div>
+        <div class="container__content--cvv">
+        <label for="cvv">CVV</label><span id="cvvError"></span>
+        <input type="text" id="cvv" name="cvv" placeholder="352" />
+        </div>
+    </div>
+    </div>
+</div>
+<label> <input type="checkbox" checked="checked" name="sameadr" /> Adresse de livraison pareil que l'adresse de facturation </label>
+
+<button type="submit" value="btnCheckout" class="btnCheckout">Continue to checkout</button>
+
+</form>
+</div>  */
+
+
+//*************************************************************** */
 
 //........Getting input-info from form and send to local storage :
 
@@ -279,23 +315,24 @@ btnCheckout.addEventListener("click", (e) => {
         //..Get info from form :
         class form {
             constructor() {
-                this.fullname = document.querySelector("#fname").value,
-                this.email = document.querySelector("#email").value, 
-                this.adresse = document.querySelector("#adr").value,
-                this.Ville = document.querySelector("#ville").value,
-                this.region = document.querySelector("#region").value,
-                this.zip = document.querySelector("#zip").value,
-                this.cardname = document.querySelector("#cname").value,
-                this.cardnumber = document.querySelector("#ccnum").value,
-                this.expmonth = document.querySelector("#expmonth").value,
-                this.expyear = document.querySelector("#expyear").value,
-                this.cvv = document.querySelector("#cvv").value
+                this.firstName = document.querySelector("#firstName").value,
+                this.lastName = document.querySelector("#lastName").value, 
+                this.address = document.querySelector("#address").value,
+                this.city = document.querySelector("#city").value,                                          
+                this.email = document.querySelector("#email").value
+                // this.region = document.querySelector("#region").value,
+                // this.zip = document.querySelector("#zip").value,
+                // this.cardname = document.querySelector("#cname").value,
+                // this.cardnumber = document.querySelector("#ccnum").value,
+                // this.expmonth = document.querySelector("#expmonth").value,
+                // this.expyear = document.querySelector("#expyear").value,
+                // this.cvv = document.querySelector("#cvv").value
             }
         }
 
         //...Call Class "form" to create "form" object :
-        const getDataFromForm = new form();
-            console.log(getDataFromForm);
+        const contact = new form();
+            console.log(contact);
             
 
         //*******************************************VALIDATION OF THE FORM**********************************************/
@@ -317,61 +354,67 @@ btnCheckout.addEventListener("click", (e) => {
             document.querySelector(`#${querySelectorId}`).textContent = "Veuillez corriger ce champ.";
         };
 
-        function validationOfFullame() {
-        //.."fullname" validation...Name must be of only letters (capital or lowercase), 
+        function validationOfFirstName() {
+        //.."firstName" validation...Name must be of only letters (capital or lowercase), 
         //..spaces + letters must be a mini of 3 and 21 max. 
-            const nameValidation = getDataFromForm.fullname;
+            const nameValidation = contact.firstName;
             if (regExpFullnameVilleRegionCcardName(nameValidation)) {
-                inputErrorMessageDisappear("nameError");
+                inputErrorMessageDisappear("firstNameError");
                 return true;
             } else {
-                inputErrorMessage("nameError");
-                alert(alertEntryError("Fullname"));
+                inputErrorMessage("firstNameError");
+                alert(alertEntryError("firstName"));
                 return false;
             };
         }
 
+        function validationOfLastName() {
+            //.."lastName" validation...Name must be of only letters (capital or lowercase), 
+            //..spaces + letters must be a mini of 3 and 21 max. 
+                const nameValidation = contact.lastName;
+                if (regExpFullnameVilleRegionCcardName(nameValidation)) {
+                    inputErrorMessageDisappear("lastNameError");
+                    return true;
+                } else {
+                    inputErrorMessage("lastNameError");
+                    alert(alertEntryError("lastName"));
+                    return false;
+                };
+            }
+
+        
         function validationOfVille() {
             //.."Ville" validation...Ville must be of only letters (capital or lowercase), 
             //..spaces + letters must be a mini of 3 and 21 max. 
-                const villeValidation = getDataFromForm.Ville;
+                const villeValidation = contact.city;
                 if (regExpFullnameVilleRegionCcardName(villeValidation)) {
-                    inputErrorMessageDisappear("villeError");
+                    inputErrorMessageDisappear("cityError");
                     return true;
                 } else {
-                    alert(alertEntryError("ville"));
-                    inputErrorMessage("villeError");
+                    alert(alertEntryError("city"));
+                    inputErrorMessage("cityError");
                     return false;
                 };
             }
 
-        function validationOfRegion() {
-            //.."region" validation...region must be of only letters (capital or lowercase), 
-            //..spaces + letters must be a mini of 3 and 21 max. 
-                const regionValidation = getDataFromForm.region;
-                if (regExpFullnameVilleRegionCcardName(regionValidation)) {
-                    inputErrorMessageDisappear("regionError");
-                    return true;
-                } else {
-                    alert(alertEntryError("region"));
-                    inputErrorMessage("regionError");
-                    return false;
-                };
-            }
+        //********* ADDRESS VALIDATION**********/
+        const regExpAdresse = (value) => {
+            return /^(\d{1,}) [a-zA-Z0-9\s]+(\.)? [a-zA-Z\s]+(\,)?$/.test(value);
+        }
 
-        function validationOfCcardName() {
-            //.."Cardname" validation... must be of only letters (capital or lowercase), 
-            //..spaces + letters must be a mini of 3 and 21 max. 
-                const ccardNameValidation = getDataFromForm.cardname;
-                if (regExpFullnameVilleRegionCcardName(ccardNameValidation)) {
-                    inputErrorMessageDisappear("cnameError");
-                    return true;
-                } else {
-                    alert(alertEntryError("cardname"));
-                    inputErrorMessage("cnameError");
-                    return false;
-                };
-            }
+        function validationOfAdresse() {
+        //.."address" validation... digits not accepted in 2nd part address.
+            const adresseValidation = contact.address;
+            if (regExpAdresse(adresseValidation)) {
+                inputErrorMessageDisappear("addressError");
+                return true;
+            } else {
+                alert("Votre adresse n'est pas valid");
+                inputErrorMessage("addressError");
+                return false;
+            };
+        }
+
 
         //********* EMAIL VALIDATION**********/
         const regExpEmail = (value) => {
@@ -381,7 +424,7 @@ btnCheckout.addEventListener("click", (e) => {
         function validationOfEmail() {
         //.."email" validation...limited to alphanumeric & underscore entries, with an @ symbol 
         //..spaces + letters must be a mini of 3 and 21 max. 
-            const emailValidation = getDataFromForm.email;
+            const emailValidation = contact.email;
             if (regExpEmail(emailValidation)) {
                 inputErrorMessageDisappear("emailError");
                 return true;
@@ -392,129 +435,141 @@ btnCheckout.addEventListener("click", (e) => {
             };
         }
 
-        //********* ADDRESS VALIDATION**********/
-        const regExpAdresse = (value) => {
-            return /^(\d{1,}) [a-zA-Z0-9\s]+(\.)? [a-zA-Z\s]+(\,)?$/.test(value);
-        }
 
-        function validationOfAdresse() {
-        //.."address" validation... digits not accepted in 2nd part address.
-            const adresseValidation = getDataFromForm.adresse;
-            if (regExpAdresse(adresseValidation)) {
-                inputErrorMessageDisappear("adrError");
-                return true;
-            } else {
-                alert("Votre adresse n'est pas valid");
-                inputErrorMessage("adrError");
-                return false;
-            };
-        }
+// function validationOfRegion() {
+        //     //.."region" validation...region must be of only letters (capital or lowercase), 
+        //     //..spaces + letters must be a mini of 3 and 21 max. 
+        //         const regionValidation = contact.region;
+        //         if (regExpFullnameVilleRegionCcardName(regionValidation)) {
+        //             inputErrorMessageDisappear("regionError");
+        //             return true;
+        //         } else {
+        //             alert(alertEntryError("region"));
+        //             inputErrorMessage("regionError");
+        //             return false;
+        //         };
+        //     }
+
+        // function validationOfCcardName() {
+        //     //.."Cardname" validation... must be of only letters (capital or lowercase), 
+        //     //..spaces + letters must be a mini of 3 and 21 max. 
+        //         const ccardNameValidation = contact.cardname;
+        //         if (regExpFullnameVilleRegionCcardName(ccardNameValidation)) {
+        //             inputErrorMessageDisappear("cnameError");
+        //             return true;
+        //         } else {
+        //             alert(alertEntryError("cardname"));
+        //             inputErrorMessage("cnameError");
+        //             return false;
+        //         };
+        //     }
 
         //********* ZIP-CODE VALIDATION**********/
-        const regExpZip = (value) => {
-            return /^[0-9]{5}$/.test(value);
-        }
+        // const regExpZip = (value) => {
+        //     return /^[0-9]{5}$/.test(value);
+        // }
 
-        function validationOfZip() {
-        //.."Zip" validation... Only 5 digits are allowed (and no spaces).
-            const zipValidation = getDataFromForm.zip;
-            if (regExpZip(zipValidation)) {
-                inputErrorMessageDisappear("zipError");
-                return true;
-            } else {
-                alert("Votre code postal n'est pas valid");
-                inputErrorMessage("zipError");
-                return false;
-            };
-        }
+        // function validationOfZip() {
+        // //.."Zip" validation... Only 5 digits are allowed (and no spaces).
+        //     const zipValidation = contact.zip;
+        //     if (regExpZip(zipValidation)) {
+        //         inputErrorMessageDisappear("zipError");
+        //         return true;
+        //     } else {
+        //         alert("Votre code postal n'est pas valid");
+        //         inputErrorMessage("zipError");
+        //         return false;
+        //     };
+        // }
 
-        //********* CREDIT CARD NUMBER VALIDATION**********/
-        const regExpCcnum = (value) => {
-            return /^4[0-9]{15}$/.test(value);
-        }
+        // //********* CREDIT CARD NUMBER VALIDATION**********/
+        // const regExpCcnum = (value) => {
+        //     return /^4[0-9]{15}$/.test(value);
+        // }
 
-            function validationOfCcnum() {
-            //.."Ccnum" validation... Only 16 digits are allowed (and no spaces).
-                const ccnumValidation = getDataFromForm.cardnumber;
-                if (regExpCcnum(ccnumValidation)) {
-                    inputErrorMessageDisappear("ccnumError");
-                    return true;
-                } else {
-                    alert("Votre numéro de carte n'est pas valid");
-                    inputErrorMessage("ccnumError");
-                    return false;
-                };
-            }
+        //     function validationOfCcnum() {
+        //     //.."Ccnum" validation... Only 16 digits are allowed (and no spaces).
+        //         const ccnumValidation = contact.cardnumber;
+        //         if (regExpCcnum(ccnumValidation)) {
+        //             inputErrorMessageDisappear("ccnumError");
+        //             return true;
+        //         } else {
+        //             alert("Votre numéro de carte n'est pas valid");
+        //             inputErrorMessage("ccnumError");
+        //             return false;
+        //         };
+        //     }
 
         //********* CREDIT CARD EXP MONTH VALIDATION**********/
-        const regExpExpmonth = (value) => {
-            return /^[A-Za-z]{3,8}$/.test(value);
-        }          
+        // const regExpExpmonth = (value) => {
+        //     return /^[A-Za-z]{3,8}$/.test(value);
+        // }          
 
-            function validationOfExpmonth() {
-                //.."expmonth" validation... Only letters are allowed (and no spaces).
-                    const expmonthValidation = getDataFromForm.expmonth;
-                    if (regExpExpmonth(expmonthValidation)) {
-                        inputErrorMessageDisappear("expmonthError");
-                        return true;
-                    } else {
-                        alert("Votre mois d'expiration de carte n'est pas valid");
-                        inputErrorMessage("expmonthError");
-                        return false;
-                    };
-                }
+        //     function validationOfExpmonth() {
+        //         //.."expmonth" validation... Only letters are allowed (and no spaces).
+        //             const expmonthValidation = contact.expmonth;
+        //             if (regExpExpmonth(expmonthValidation)) {
+        //                 inputErrorMessageDisappear("expmonthError");
+        //                 return true;
+        //             } else {
+        //                 alert("Votre mois d'expiration de carte n'est pas valid");
+        //                 inputErrorMessage("expmonthError");
+        //                 return false;
+        //             };
+        //         }
     
         //********* CREDIT CARD EXP YEAR VALIDATION**********/
-        const regExpExpyear = (value) => {
-            return /^[0-9]{4}$/.test(value);
-        }
+        // const regExpExpyear = (value) => {
+        //     return /^[0-9]{4}$/.test(value);
+        // }
 
-            function validationOfExpyear() {
-            //.."expyear" validation... Only 4 digits are allowed (and no spaces).
-                const expyearValidation = getDataFromForm.expyear;
-                if (regExpExpyear(expyearValidation)) {
-                    inputErrorMessageDisappear("expyearError");
-                    return true;
-                } else {
-                    alert("Votre année d'expiration n'est pas valid");
-                    inputErrorMessage("expyearError");
-                    return false;
-                };
-            }
+        //     function validationOfExpyear() {
+        //     //.."expyear" validation... Only 4 digits are allowed (and no spaces).
+        //         const expyearValidation = contact.expyear;
+        //         if (regExpExpyear(expyearValidation)) {
+        //             inputErrorMessageDisappear("expyearError");
+        //             return true;
+        //         } else {
+        //             alert("Votre année d'expiration n'est pas valid");
+        //             inputErrorMessage("expyearError");
+        //             return false;
+        //         };
+        //     }
 
         //********* CREDIT CARD CODE CVV VALIDATION**********/
-        const regExpCvv = (value) => {
-            return /^[0-9]{3}$/.test(value);
-        }
+        // const regExpCvv = (value) => {
+        //     return /^[0-9]{3}$/.test(value);
+        // }
 
-            function validationOfCvv() {
-            //.."cvv" validation... Only 3 digits are allowed (and no spaces).
-                const cvvValidation = getDataFromForm.cvv;
-                if (regExpCvv(cvvValidation)) {
-                    inputErrorMessageDisappear("cvvError");
-                    return true;
-                } else {
-                    alert("Votre code CVV n'est pas valid");
-                    inputErrorMessage("cvvError");
-                    return false;
-                };
-            }
+        //     function validationOfCvv() {
+        //     //.."cvv" validation... Only 3 digits are allowed (and no spaces).
+        //         const cvvValidation = contact.cvv;
+        //         if (regExpCvv(cvvValidation)) {
+        //             inputErrorMessageDisappear("cvvError");
+        //             return true;
+        //         } else {
+        //             alert("Votre code CVV n'est pas valid");
+        //             inputErrorMessage("cvvError");
+        //             return false;
+        //         };
+        //     }
 
         //*******************************************SEND TO LOCAL STORAGE AFTER VALIDATION OF FIELDS**********************************************/
 
-        if (validationOfFullame() &&
-            validationOfVille() &&
-            validationOfRegion() &&
-            validationOfEmail() &&
+        if (validationOfFirstName() &&
+            validationOfLastName() &&
             validationOfAdresse() &&
-            validationOfZip() &&
-            validationOfCcardName() &&
-            validationOfCcnum() &&
-            validationOfExpmonth() &&
-            validationOfExpyear() &&
-            validationOfCvv()){
+            validationOfVille() &&
+            validationOfEmail() ){
+            // validationOfRegion() &&
+            // validationOfZip() &&
+            // validationOfCcardName() &&
+            // validationOfCcnum() &&
+            // validationOfExpmonth() &&
+            // validationOfExpyear() &&
+            // validationOfCvv()){
         //..Sending the input data to the local storage if argument "if" returns "true":
-        localStorage.setItem("getDataFromForm", JSON.stringify(getDataFromForm));
+        localStorage.setItem("contact", JSON.stringify(contact));
         }else{
             alert("Please review and correct your entries.");
         }
@@ -523,17 +578,17 @@ btnCheckout.addEventListener("click", (e) => {
         // ......Need to send products and form details to the server :
         const infoToBeSent = {
             prodInLocalStorage,
-            getDataFromForm
+            contact
         }
         console.log("infoToBeSent");
         console.log(infoToBeSent);
 
         //...Sending product and user data to server.......
-        const sendToServer = fetch("http://localhost:3000/api/teddies", {
+        const sendToServer = fetch("http://localhost:3000/api/teddies/order", {
             method: "POST",
             body: JSON.stringify(infoToBeSent),
             headers: {
-                "Content-type" : "applicatiom/json",
+                "Content-Type": "applicatiom/json"
             },
         });
 
@@ -543,50 +598,55 @@ btnCheckout.addEventListener("click", (e) => {
 
 ///....Objective : Keep user input in fields after page reloads - Hence, get local storage to keep field populated.
 //...Putting local storage data (strings) into a variable
-const loadedData = localStorage.getItem("getDataFromForm");
+const loadedData = localStorage.getItem("contact");
 
 //...Convert the strings into an Js object.
 const loadedDataInField = JSON.parse(loadedData);
 
-//************************************************************************************************************/
+//*************NOT WORKING...Returns "Undefined"***********************************************************************************************/
 //....Function to Get local storage to populate the field.
-function reloadedDataFromLocalStorage(userData) {
-    if(loadedDataInField == null) {
-        console.log("Local storage is empty");
-        } else {
-        document.querySelector(`#${userData}`).value = loadedDataInField[userData];
-        } 
-}
+// function reloadedDataFromLocalStorage(userData) {
 
-reloadedDataFromLocalStorage("fname");
-reloadedDataFromLocalStorage("email");
-reloadedDataFromLocalStorage("adr");
-reloadedDataFromLocalStorage("ville");
-reloadedDataFromLocalStorage("region");
-reloadedDataFromLocalStorage("zip");
-reloadedDataFromLocalStorage("cname");
-reloadedDataFromLocalStorage("ccnum");
-reloadedDataFromLocalStorage("expmonth");
-reloadedDataFromLocalStorage("expyear");
-reloadedDataFromLocalStorage("cvv");
+//     if(loadedDataInField == null) {
+//         console.log("Local storage is empty");
+//         } else {
+//         document.querySelector(`#${userData}`).value = loadedDataInField[userData];
+//         } 
+// }
 
-console.log(loadedDataInField);
+// reloadedDataFromLocalStorage("firstName");
+// reloadedDataFromLocalStorage("email");
+// reloadedDataFromLocalStorage("address");
+// reloadedDataFromLocalStorage("city");
+// reloadedDataFromLocalStorage("region");
+// reloadedDataFromLocalStorage("zip");
+// reloadedDataFromLocalStorage("cname");
+// reloadedDataFromLocalStorage("ccnum");
+// reloadedDataFromLocalStorage("expmonth");
+// reloadedDataFromLocalStorage("expyear");
+// reloadedDataFromLocalStorage("cvv");
+
+// console.log(loadedDataInField);
 
 //************************************************************************************************************/
 
 ///....Keep user details from disappearing after a page reload - Populate the field.
+if(loadedDataInField == null) {
+    console.log("Local storage is empty");
+    } else {
 
+    document.querySelector("#firstName").value = loadedDataInField.firstName;
+    document.querySelector("#lastName").value = loadedDataInField.lastName;
+    document.querySelector("#address").value = loadedDataInField.address;   
+    document.querySelector("#city").value = loadedDataInField.city;     
+    document.querySelector("#email").value = loadedDataInField.email;
+    // document.querySelector("#region").value = loadedDataInField.region;
+    // document.querySelector("#zip").value = loadedDataInField.zip;
+    // document.querySelector("#cname").value = loadedDataInField.cardname;
+    // document.querySelector("#ccnum").value = loadedDataInField.cardnumber;
+    // document.querySelector("#expmonth").value = loadedDataInField.expmonth;
+    // document.querySelector("#expyear").value = loadedDataInField.expyear;
+    // document.querySelector("#cvv").value = loadedDataInField.cvv;
+    }
 
-// document.querySelector("#fname").value = loadedDataInField.fullname;
-// document.querySelector("#email").value = loadedDataInField.email;
-// document.querySelector("#adr").value = loadedDataInField.adresse;
-// document.querySelector("#ville").value = loadedDataInField.Ville;
-// document.querySelector("#region").value = loadedDataInField.region;
-// document.querySelector("#zip").value = loadedDataInField.zip;
-// document.querySelector("#cname").value = loadedDataInField.cardname;
-// document.querySelector("#ccnum").value = loadedDataInField.cardnumber;
-// document.querySelector("#expmonth").value = loadedDataInField.expmonth;
-// document.querySelector("#expyear").value = loadedDataInField.expyear;
-// document.querySelector("#cvv").value = loadedDataInField.cvv;
-
-// console.log(loadedDataInField);
+    console.log(loadedDataInField);

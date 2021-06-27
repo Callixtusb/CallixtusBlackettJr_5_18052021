@@ -12,7 +12,7 @@ console.log(prodInLocalStorage);
 
 //Alimentation du panier..............
 const prodAdditionToCart = document.querySelector(".container__recap--in-Cart");
-
+const totalQty = document.querySelector(".container_btnMenuPanier");
 
 //...Indicate whether or not the cart is empty..
 if (prodInLocalStorage === null || prodInLocalStorage == 0) {
@@ -21,6 +21,14 @@ if (prodInLocalStorage === null || prodInLocalStorage == 0) {
     <div>Votre panier est vide.</div>
     </div>`;
     prodAdditionToCart.innerHTML = cartIsEmpty;
+
+    //...also indicate "(0)" when cart is empty..
+    const prodInCartQty = `
+    <i class="fa fa-shopping-cart"></i>
+    <a href="cart.html" class="menu__panier"><b class="total__qty">(0)</b>Panier</a>`;
+
+    totalQty.innerHTML = prodInCartQty;
+
     
 } else {
 
@@ -75,27 +83,6 @@ for(s = 0; s < prodInLocalStorage.length; s++) {
     totalQty.innerHTML = prodInCartQty;
 
     console.log(totalQties);
-
-
-// function cartProduct(itemID) {
-    // if (itemID === itemModifID) {
-    //     itemModifID.splice(r, 1)
-    //     console.log(itemModifID);               
-    //     return
-    // }
-    // }
-
-
-// delete test -Not working- (Option 3)....'onclick' function was called in the <button> tag above.....
-    // function deleteItemFromCarte (prodID) {
-    //     let prodInLocalStorage = JSON.parse(localStorage.getItem("productToOrder"));
-
-    //     let newCart = prodInLocalStorage.filter((item) => item.productID != prodID)
-    //     console.log(prodInLocalStorage);
-
-    //     localStorage.setItem("productToOrder", JSON.stringify(newCart))
-
-    // }
 
 }
 
@@ -165,35 +152,45 @@ btnViderPanier.addEventListener("click", (event) => {
 
 
 // ... Quantity and total calculation...........................
+//...Indicate whether or not the cart is empty..
+if (prodInLocalStorage === null || prodInLocalStorage == 0) {
+    let cartIsEmpty =`
+    <div class="panierVideMessage">
+    <div>Votre panier est vide.</div>
+    </div>`;
+    prodAdditionToCart.innerHTML = cartIsEmpty;
 
-//.....stocking the prices
-const stockingPrices = [];
+} else {    
+    //.....stocking the prices
+    const stockingPrices = [];
 
-// Getting the prices....
-for(s = 0; s < prodInLocalStorage.length; s++) {
-    let pricesInTheCart = prodInLocalStorage[s].quantity * prodInLocalStorage[s].Price;
-    stockingPrices.push(pricesInTheCart);
+    // Getting the prices....
+    for(s = 0; s < prodInLocalStorage.length; s++) {
+        let pricesInTheCart = prodInLocalStorage[s].quantity * prodInLocalStorage[s].Price;
+        stockingPrices.push(pricesInTheCart);
 
-    console.log(stockingPrices);
+        console.log(stockingPrices);
+    }
+
+    //...Use of ".Reduce" method to calculte the total price :
+        //...ex.: const reducer = (accumulator, currentalue) => accumulator + currentValue;
+        const reducer = (accumulator, currentValue) => accumulator + currentValue
+        const totalPrice = stockingPrices.reduce(reducer, 0)
+
+        //..Added total price function...
+        const cartTotalPrice = document.querySelector('.cartTotalPrice');
+        const containerCartTotalPrice = `
+            <span class="titleTotal">Total</span> 
+            <span class=" "><b> </b></span>
+            <span class="titleTotalQty"><b> </b></span>
+            <span class="spaceHolder"><b></b></span>
+            <span class="price_total"><b>${totalPrice / 100 + ' €'}</b></span>
+        `;
+        cartTotalPrice.innerHTML = containerCartTotalPrice;
+        console.log(totalPrice);
+    
 }
 
-   //...Use of ".Reduce" method to calculte the total price :
-    //...ex.: const reducer = (accumulator, currentalue) => accumulator + currentValue;
-    const reducer = (accumulator, currentValue) => accumulator + currentValue
-    const totalPrice = stockingPrices.reduce(reducer, 0)
-
-    //..Added total price function...
-    const cartTotalPrice = document.querySelector('.cartTotalPrice');
-    const containerCartTotalPrice = `
-        <span class="titleTotal">Total</span> 
-        <span class=" "><b> </b></span>
-        <span class="titleTotalQty"><b> </b></span>
-        <span class="spaceHolder"><b></b></span>
-        <span class="price_total"><b>${totalPrice / 100 + ' €'}</b></span>
-    `;
-    cartTotalPrice.innerHTML = containerCartTotalPrice;
-    console.log(totalPrice);
-    
 /////...............................Order form///........................
 
 const showHtmlForm = () => {
@@ -541,8 +538,6 @@ btnCheckout.addEventListener("click", (e) => {
         });
 
         console.log(sendToServer);
-
-
 });
 
 
@@ -555,41 +550,43 @@ const loadedDataInField = JSON.parse(loadedData);
 
 //************************************************************************************************************/
 //....Function to Get local storage to populate the field.
-// function reloadedDataFromLocalStorage(userData) {
-//     if(loadedDataInField == null) {
-//         console.log("Local storage is empty");
-//         } else {
-//         document.querySelector(`#${userData}`).value = loadedDataInField[userData];
-//         } 
-// }
+function reloadedDataFromLocalStorage(userData) {
+    if(loadedDataInField == null) {
+        console.log("Local storage is empty");
+        } else {
+        document.querySelector(`#${userData}`).value = loadedDataInField[userData];
+        } 
+}
 
-// reloadedDataFromLocalStorage("fname");
-// reloadedDataFromLocalStorage("email");
-// reloadedDataFromLocalStorage("adr");
-// reloadedDataFromLocalStorage("ville");
-// reloadedDataFromLocalStorage("region");
-// reloadedDataFromLocalStorage("zip");
-// reloadedDataFromLocalStorage("cname");
-// reloadedDataFromLocalStorage("ccnum");
-// reloadedDataFromLocalStorage("expmonth");
-// reloadedDataFromLocalStorage("expyear");
-// reloadedDataFromLocalStorage("cvv");
+reloadedDataFromLocalStorage("fname");
+reloadedDataFromLocalStorage("email");
+reloadedDataFromLocalStorage("adr");
+reloadedDataFromLocalStorage("ville");
+reloadedDataFromLocalStorage("region");
+reloadedDataFromLocalStorage("zip");
+reloadedDataFromLocalStorage("cname");
+reloadedDataFromLocalStorage("ccnum");
+reloadedDataFromLocalStorage("expmonth");
+reloadedDataFromLocalStorage("expyear");
+reloadedDataFromLocalStorage("cvv");
 
-// console.log(loadedDataInField);
+console.log(loadedDataInField);
 
 //************************************************************************************************************/
 
 ///....Keep user details from disappearing after a page reload - Populate the field.
-document.querySelector("#fname").value = loadedDataInField.fullname;
-document.querySelector("#email").value = loadedDataInField.email;
-document.querySelector("#adr").value = loadedDataInField.adresse;
-document.querySelector("#ville").value = loadedDataInField.Ville;
-document.querySelector("#region").value = loadedDataInField.region;
-document.querySelector("#zip").value = loadedDataInField.zip;
-document.querySelector("#cname").value = loadedDataInField.cardname;
-document.querySelector("#ccnum").value = loadedDataInField.cardnumber;
-document.querySelector("#expmonth").value = loadedDataInField.expmonth;
-document.querySelector("#expyear").value = loadedDataInField.expyear;
-document.querySelector("#cvv").value = loadedDataInField.cvv;
 
-console.log(loadedDataInField);
+
+// document.querySelector("#fname").value = loadedDataInField.fullname;
+// document.querySelector("#email").value = loadedDataInField.email;
+// document.querySelector("#adr").value = loadedDataInField.adresse;
+// document.querySelector("#ville").value = loadedDataInField.Ville;
+// document.querySelector("#region").value = loadedDataInField.region;
+// document.querySelector("#zip").value = loadedDataInField.zip;
+// document.querySelector("#cname").value = loadedDataInField.cardname;
+// document.querySelector("#ccnum").value = loadedDataInField.cardnumber;
+// document.querySelector("#expmonth").value = loadedDataInField.expmonth;
+// document.querySelector("#expyear").value = loadedDataInField.expyear;
+// document.querySelector("#cvv").value = loadedDataInField.cvv;
+
+// console.log(loadedDataInField);

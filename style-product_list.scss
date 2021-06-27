@@ -16,6 +16,12 @@ header {
     @include header;
     }
 
+.total__qty {
+    margin-right: 15px;
+    color: blueviolet;
+    }
+
+
 
 // MENU //
 .menu {
@@ -299,7 +305,12 @@ margin-bottom: 150px;
 #produit__list--post, #camera__list--post, #meuble__list--post {
 display: block;
 margin: 0 auto;
-width: 310px;
+width: 100%;
+// width: 310px;
+@include breakpoint (laptop) {
+width: 510px;
+
+}
 
 }
 
@@ -311,17 +322,33 @@ width: 310px;
     background-color: #f6f6f6;
     border-radius: 15px;
     margin-bottom: 30px;
+    @include breakpoint (laptop) {
+
+
+      }
 }
 
 .produit_img {
     object-fit: cover;
-    height: 193px;
+    height: 393px;
     width: 100%;
+    @include breakpoint (laptop) {
+        height: 393px;
+        width: 490px;
+
+        
+        }
 }
 
 .produit__img_container {
-    height: 229px;
+    height: 429px;
     width: 100%;
+    @include breakpoint (laptop) {
+        height: 429px;
+        width: 510px;
+        
+        }
+        
 }
 
 
@@ -423,7 +450,7 @@ width: 310px;
     .produit__content__bloc, .camera__content__bloc, .meuble__content__bloc {
          // Tablet portrait & Desktop ////////////////////////////
         @include breakpoint (laptop) {
-           width: 330px;     
+           width: 530px;     
         } 
     }
 
@@ -459,6 +486,16 @@ width: 310px;
     .produit__price-bloc, .camera__price-bloc, .meuble__price-bloc { 
         @include menu_prices;
     }
+
+    // .produit__list--post {
+    // @include breakpoint (laptop) {
+    //     display: flex;
+    //     flex-direction: row;
+    //            flex-wrap: wrap;
+    //    justify-content: space-evenly;
+    //    align-content: baseline;
+    //   }
+    // }
 
 }
 }

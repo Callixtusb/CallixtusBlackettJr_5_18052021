@@ -25,6 +25,11 @@ header .header__logo {
   }
 }
 
+.total__qty {
+  margin-right: 15px;
+  color: blueviolet;
+}
+
 .introduction {
   text-align: center;
   z-index: 101;

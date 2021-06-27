@@ -35,9 +35,9 @@
               <i class="fas fa-list-ul"></i>
               <a href="product-list.html" class="menu__produits">Produits</a>
             </li>
-            <li>
-              <i class="fas fa-shopping-cart"></i>
-              <a href="cart.html" class="menu__panier">Panier</a>
+            <li class="container_btnMenuPanier">
+              <!-- <i class="fas fa-shopping-cart"></i>
+              <a href="cart.html" class="menu__panier">Panier</a> -->
             </li>
           </ol>
         </div>
@@ -46,29 +46,30 @@
     <!-- Cart details and checkout-->
     <div class="container">
       <div class="container__wrapper--block_pmt">
-        <div class="container__wrapper--forms">
+        <!-- <div class="container__wrapper--forms"> -->
+        <!-- Forms
           <form action="#">
-            <!-- Forms -->
+
             <div class="container__content--forms">
               <div class="container__content--billing">
                 <h3>Billing Address</h3>
                 <label for="fname"><i class="fa fa-user"></i> Nom complet</label>
-                <input type="text" id="fname" name="firstname" placeholder="Callixtus Blackett Jr" />
+                <input type="text" id="fname" name="firstname" placeholder="Callixtus Blackett Jr" required/>
                 <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                <input type="text" id="email" name="email" placeholder="c.blackettjr@example.com" />
+                <input type="text" id="email" name="email" placeholder="c.blackettjr@example.com" required/>
                 <label for="adr"><i class="fa fa-address-card-o"></i> Adresse</label>
-                <input type="text" id="adr" name="adresse" placeholder="213 Jefferson ave" />
+                <input type="text" id="adr" name="adresse" placeholder="213 Jefferson ave" required/>
                 <label for="Ville"><i class="fa fa-institution"></i> Ville</label>
-                <input type="text" id="Ville" name="Ville" placeholder="Bklyn, New York" />
+                <input type="text" id="Ville" name="Ville" placeholder="Bklyn, New York" required/>
 
                 <div class="container--state_zip">
                   <div class="container__content--state">
                     <label for="state">Region</label>
-                    <input type="text" id="state" name="state" placeholder="NY" />
+                    <input type="text" id="state" name="state" placeholder="NY" required/>
                   </div>
                   <div class="container__content--zip">
                     <label for="zip">Code postal</label>
-                    <input type="text" id="zip" name="zip" placeholder="11216" />
+                    <input type="text" id="zip" name="zip" placeholder="11216" required/>
                   </div>
                 </div>
               </div>
@@ -104,9 +105,12 @@
             <label> <input type="checkbox" checked="checked" name="sameadr" /> Adresse de livraison pareil que l'adresse de facturation </label>
 
             <input type="submit" value="Continue to checkout" class="btn" />
-          </form>
-        </div>
+
+          </form> -->
+        <!-- </div> -->
       </div>
+
+      <!-- END of form--> 
 
       <div class="container__wrapper--cart">
         <div class="text_cart"><p>Revoir et confirmer votre commande.</p></div>
@@ -119,28 +123,47 @@
 
             </div>
           </h4>
+
+<!-- <table class="cartDetailsTitles">          -->
             <p class="cartDetailsTitles">
-              <span class="titleProdName"><b>Name</b></span> 
+
+    <!-- Table titles and button "vider panier" insert here-->
+
+              <!-- <span class="titleProdName"><b>Name</b></span> 
               <span class="titleColor"><b>Color</b></span>
               <span class="titleQty"><b>Quantity</b></span>
               <span class="titlePrice"><b>Price</b></span>
-              <span class="titleSupprimer"><b>Supprimer</b></span>
+              <span class="titlePrice"><b>Sub-total</b></span>
+              <button class="btnViderPanier"><b>Vider le panier</b></button> -->
             </p>
-          <hr>
-          <div class="container__recap--in-Cart">
+<hr>
+<div class="container__recap--in-Cart">
 
-    <!-- Product Cart detail insertions here-->              
+    <!-- Product Cart detail insertions here-->    
          
-          </div>
-          <hr />
+            <!-- <p class="cartDetails"><a href="#" class="product_name">${prodInLocalStorage[p].prodName}</a> 
+              <span class="color">${prodInLocalStorage[p].product_color}</span>
+              <span class="qty">${prodInLocalStorage[p].quantity}</span>
+              <span class="price">${prodInLocalStorage[p].Price / 100 + ' €'}</span>
+              <span class="subTotal">${prodInLocalStorage[p].quantity * prodInLocalStorage[p].Price / 100 + ' €'}</span>
+              <button class="btnSupprimer">Supprimer</button>
+            </p> -->
+
+</div>
+<hr />
           <div>
             <p class="cartTotalPrice">
+
               <!-- Total <span class="price_total"><b>30€</b></span> -->
-                <span class="titleTotal">Total</span> 
-                <span class=" "><b> </b></span>
-                <span class="titleTotalQty"><b> </b></span>
-                <span class="price_total"><b>30€</b></span>
+              <!-- <span class="titleTotal">Total</span> 
+              <span class=" "><b> </b></span>
+              <span class="titleTotalQty"><b>,, </b></span>
+              <span class="price_total"><b>${totalPrice / 100 + ' €'}</b></span>
+              <span class="spaceHolder"><b>.. </b></span> -->
+
             </p>
+<!-- </table>  -->
+           </div>
           </div>
         </div>
       </div>

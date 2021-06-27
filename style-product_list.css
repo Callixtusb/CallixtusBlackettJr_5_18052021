@@ -30,6 +30,11 @@ header .header__logo {
   }
 }
 
+.total__qty {
+  margin-right: 15px;
+  color: blueviolet;
+}
+
 .menu {
   position: relative;
   z-index: 98;
@@ -368,7 +373,13 @@ header .header__logo {
 .produit #produit__list--post, .produit #camera__list--post, .produit #meuble__list--post {
   display: block;
   margin: 0 auto;
-  width: 310px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .produit #produit__list--post, .produit #camera__list--post, .produit #meuble__list--post {
+    width: 510px;
+  }
 }
 
 .produit .blockProduct {
@@ -381,13 +392,27 @@ header .header__logo {
 .produit .produit_img {
   -o-object-fit: cover;
      object-fit: cover;
-  height: 193px;
+  height: 393px;
   width: 100%;
 }
 
+@media screen and (min-width: 768px) {
+  .produit .produit_img {
+    height: 393px;
+    width: 490px;
+  }
+}
+
 .produit .produit__img_container {
-  height: 229px;
+  height: 429px;
   width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .produit .produit__img_container {
+    height: 429px;
+    width: 510px;
+  }
 }
 
 .produit .produit__wrapper, .produit .camera__wrapper, .produit .meuble__wrapper {
@@ -713,7 +738,7 @@ header .header__logo {
 
 @media screen and (min-width: 768px) {
   .produit .produit__wrapper .produit__content__bloc, .produit .produit__wrapper .camera__content__bloc, .produit .produit__wrapper .meuble__content__bloc, .produit .camera__wrapper .produit__content__bloc, .produit .camera__wrapper .camera__content__bloc, .produit .camera__wrapper .meuble__content__bloc, .produit .meuble__wrapper .produit__content__bloc, .produit .meuble__wrapper .camera__content__bloc, .produit .meuble__wrapper .meuble__content__bloc {
-    width: 330px;
+    width: 530px;
   }
 }
 

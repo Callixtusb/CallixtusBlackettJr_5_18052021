@@ -158,10 +158,14 @@ fetchedStream.then((response) => response.json())
 console.log(product);
 
 const prodName = product.name;
-const prodPrice = product.price / 100 + ' Eur';
+const prodPrice = product.price;
 const prodDesc = product.description;
 const coloris = product.colors;
+const prodID = product._id;
+// const sub_total = quantity * Price;
 
+
+console.log(prodID);
 //... Structuration et injection de la pesentation du produit...........
 const productDetails = `
     <div class="produit__card__wrapper">
@@ -179,14 +183,11 @@ const productDetails = `
                 </select>        
             </form>
             <br>
+
             <form>
             <label for="quantity"><strong>Quantity :</strong></label>
             <select name="quantity" id="qtyChoice">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+
             </select>
             </form>
         </div>
@@ -222,11 +223,19 @@ formSelect.innerHTML = colorQtyStructure;
 
 console.log(formSelect);
 
-///...Set up quantity of individual products...//////..............
 
+//....Quantity.structure.........................////............ 
+const containerOfQtyStructure = document.querySelector("#qtyChoice");
 
+const qtyStructure = `
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+`;
 
-
+containerOfQtyStructure.innerHTML = qtyStructure;
 
 
 
@@ -240,19 +249,26 @@ const btnSendSelection = document.querySelector("#addToCart");
 btnSendSelection.addEventListener("click", (e) => {
     e.preventDefault();
 
-        ///....Customer's selection.......///////......
+        ///....Customer's color selection.......///////......
         const clientColorChoice = formName.value;
         console.log(clientColorChoice);
+
+        //....Customer's Quantity selection.......///////......
+        const quantityChoice = containerOfQtyStructure.value;
+        console.log(quantityChoice);
+
+
 
         //.... Data elements to be retrieved from the form for confirmation........//////.......///
         const prodDetails = {
             prodName: product.name,
-            productID: product._id,
+            productID: prodID,
             product_color: clientColorChoice,
-            quantity: 2,
-            Price: prodPrice
+            quantity: quantityChoice,
+            Price: prodPrice,
+            sub_total: quantityChoice * prodPrice
         };
-        console.log(prodDetails);
+        // console.log(sub_total);
 
         ///...Setting up function of the "put in the cart" popup... this function is called below in the "If ()".
         const confirmationMessage = () => {
@@ -263,6 +279,7 @@ btnSendSelection.addEventListener("click", (e) => {
                 window.location.href = "product-list.html";
             }
         }
+
 
         /////....Transfer selected product data from form/btn to local storage (this must be in a variable)...../////....///./////...
         ////But first we must check if a copy of the data is not already in the local Storage (using the Boolean effect - if there is somthing, it will return "true").
@@ -288,7 +305,7 @@ btnSendSelection.addEventListener("click", (e) => {
             localStorage.setItem("productToOrder", JSON.stringify(prodInLocalStorage));
             confirmationMessage ();
             console.log(prodInLocalStorage);
-
+ 
         //     prodInLocalStorage.forEach(item => {
         //         if(product.name == item.name){
         //             product.quantity = item.quanity += 1;
@@ -309,9 +326,58 @@ btnSendSelection.addEventListener("click", (e) => {
 
 
 
-// module.export {
-//     prodDetails
-// };
+let prodInLocalStorage = JSON.parse(localStorage.getItem("productToOrder"));
+console.log(prodInLocalStorage);
+
+
+//.....stocking the Qty
+const stockingQuantities = [];
+
+// Getting the quantities....
+for(s = 0; s < prodInLocalStorage.length; s++) {
+    let quantitiesInTheCart = prodInLocalStorage[s].quantity * 1;
+    stockingQuantities.push(quantitiesInTheCart);
+
+    console.log(stockingQuantities);
+}
+
+   //...Use of ".Reduce" method to calculte the total Qty :
+    //...ex.: const reducer = (accumulator, currentalue) => accumulator + currentValue;
+    const reducer = (accumulator, currentValue) => accumulator + currentValue
+    const totalQties = stockingQuantities.reduce(reducer, 0)
+
+    const totalQty = document.querySelector(".container_btnMenuPanier");
+
+    const prodInCartQty = `
+    <i class="fa fa-shopping-cart"></i>
+    <a href="cart.html" class="menu__panier"><b class="total__qty">(${totalQties})</b>Panier</a>`;
+
+    totalQty.innerHTML = prodInCartQty;
+
+    console.log(totalQties);
+
+
+
+
+
+///...Set up quantity of individual products...//////..............
+// let qty = document.querySelector("#qtyChoice");
+
+// const quantity = [];
+
+// for (a = 0; a < prodInLocalStorage.length; a += 1) {
+//     if (prodInLocalStorage[a].prodName === prodName) {
+
+//         prodInLocalStorage[a].quantity += 1
+
+//         console.log(prodInLocalStorage[a].quantity);
+        
+//     }
+//     // quantity.push(quantity)
+
+
+// }
+
 
 
 

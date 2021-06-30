@@ -39,19 +39,6 @@ getProductData()
 
 
 
-
-//....creating URLs.............
-// const urlBear = new URL('http://127.0.0.1:5500/produit.html')
-// urlBear.search = "?id=5be9c8541c9d440000665243"
-
-// console.log(urlBear)
-
-
-
-
-
-
-
 //****Creating Quantity count in menu*******************************************************
 let productsInLocalStorage = JSON.parse(localStorage.getItem("products"));
 console.log(productsInLocalStorage);

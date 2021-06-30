@@ -859,7 +859,7 @@ footer .footer__main .footer__contact {
 
 @media screen and (min-width: 768px) {
   footer {
-    position: fixed;
+    position: relative;
     width: 100%;
     bottom: 0px;
   }

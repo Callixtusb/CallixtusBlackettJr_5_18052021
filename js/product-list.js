@@ -11,7 +11,7 @@ async function getProductData() {
     console.log(productPosts);
 
     const newPost = productPosts.map(function(product, index) {
-       if (index < 5) { return `
+       if (index < 100) { return `
        <a href="./produit.html?_id=${product._id}">
        <div class="blockProduct">
            <div class="namePriceCombo">

@@ -48,7 +48,6 @@ function addProductsToCart () {
 
                 const prodAddToCart = document.querySelector(".container__recap--in-Cart");
                 prodAddToCart.innerHTML = prodInCart;
-
         }
 
 
@@ -468,10 +467,10 @@ function OrderInfo() {
                             console.log(content.orderId);
 
                             //..Put Order Id in the local storage...
-                            localStorage.setItem("OrderId", content.orderId);
+                            localStorage.setItem("orderId", content.orderId);
 
                             //..Go to confirmation page...
-                            window.location.href = "#";
+                            window.location.href = "confirmation.html";
 
                         }else {
                             console.log(`Response status : ${response.status}`);

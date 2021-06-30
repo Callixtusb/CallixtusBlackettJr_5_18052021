@@ -2,9 +2,12 @@
   @mixin breakpoint ($point) {
     @if $point == laptop {
         @media screen and (min-width: 768px) { @content; }
-    }
+  }
     @if $point == laptop769 {
       @media screen and (min-width: 769px) { @content; }
+  }
+    @if $point == laptop900 {
+      @media screen and (max-width: 900px) { @content; }
   }
     @if $point == laptop1099 {
       @media screen and (min-width: 1099px) { @content; }

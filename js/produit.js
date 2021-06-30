@@ -1,146 +1,9 @@
-// function nounours() {
-//     //...Il y a Deux methodes pour la recuperation de la chaine de requete de l'url...
-//     const queryStr_id = window.location.search;
-//     console.log(queryStr_id);
-
-//             //...1ere methode...
-//     const product = new URLSearchParams(queryStr_id);
-//     console.log(product);
-
-//     const id = product.get('_id');
-//     console.log(id);
-
-//     const idPres = product.has('_id');
-//     console.log(idPres);
-
-//             //...2eme methode...
-//             // const prodId = queryStr_id.slice(5);
-//             // console.log(prodId);
-
-//     //...Il y a Deux methodes pour afficher le produit qui a ete selectionne par l'id...
-
-//             //...1ere methode ("Find()" method)...Used if the source is an array..
-//                     // const selectedProduct = array.find ((element) => element._id ===id);
-//                     // console.log(selectedProduct);
-
-//             //...2eme method..("fetch())....fetch "await" or fetch ".then" ...(Best adapted to my use case)...
-//             const fetchedStream = fetch('http://localhost:3000/api/teddies/' + id);
-//             fetchedStream.then((response) => response.json())
-
-//                     .then((product) => {
-//                     console.log(product);
-
-//                     const name = product.name;
-//                     const prodPrice = product.price / 100 + ' Eur';
-//                     const prodDesc = product.description;
-//                     const coloris = product.colors;
-
-//     // //... Structuration de la pesentation du produit......
-//             const productDetails = `
-//         <div class="produit__card__wrapper">
-//         <div class="produit__card__content">
-
-//                 <img src="${product.imageUrl}" alt="${product.name}" class="productImg"></img>
-
-//             <div class="container_text">
-
-//                     <h1 class="name"><span>${product.name}</span></h1>
-//                     <p class="price"><strong>Price : </strong><span>${product.price / 100 + ' €'}</span></p>
-//                     <p class="description"><strong>Description : </strong><span>${product.description}</span></p>
-//                 <form>
-//                     <label for="product_color"></label>
-//                     <select name="product_color" id="product_color">
-
-//                     </select>
-//                 </form>
-
-//                     <button id="addToCart" type="submit " name="addToCart">Ajouter au panier</button>
-//             </div>
-//         </div>
-//         </div>
-//         `;
-//         const container = document.querySelector('.container');
-//         container.innerHTML = productDetails;
-
-//         });
-// }
-// nounours()
-
-
-
-// function cameras() {
-//     //...Il y a Deux methodes pour la recuperation de la chaine de requete de l'url...
-//     const queryStr_id = window.location.search;
-//     console.log(queryStr_id);
-
-//             //...1ere methode...
-//     const product = new URLSearchParams(queryStr_id);
-//     console.log(product);
-
-//     const id = product.get('_id');
-//     console.log(id);
-
-//     const idPres = product.has('_id');
-//     console.log(idPres);
-
-//             //...2eme methode...
-//             // const prodId = queryStr_id.slice(5);
-//             // console.log(prodId);
-
-//     //...Il y a Deux methodes pour afficher le produit qui a ete selectionne par l'id...
-
-//             //...1ere methode ("Find()" method)...Used if the source is an array..
-//                     // const selectedProduct = array.find ((element) => element._id ===id);
-//                     // console.log(selectedProduct);
-
-//             //...2eme method..("fetch())....fetch "await" or fetch ".then" ...(Best adapted to my use case)...
-//             const fetchedStream = fetch('http://localhost:3000/api/cameras/' + id);
-//             fetchedStream.then((response) => response.json())
-
-//                     .then((product) => {
-//                     console.log(product);
-
-//                     const name = product.name;
-//                     const prodPrice = product.price / 100 + ' Eur';
-//                     const prodDesc = product.description;
-//                     const coloris = product.colors;
-
-//     // //... Structuration de la pesentation du produit......
-//             const productDetails = `
-//         <div class="produit__card__wrapper">
-//         <div class="produit__card__content">
-
-//                 <img src="${product.imageUrl}" alt="${product.name}" class="productImg"></img>
-
-//             <div class="container_text">
-
-//                     <h1 class="name"><span>${product.name}</span></h1>
-//                     <p class="price"><strong>Price : </strong><span>${product.price / 100 + ' €'}</span></p>
-//                     <p class="description"><strong>Description : </strong><span>${product.description}</span></p>
-//                 <form>
-//                     <label for="product_color"></label>
-//                     <select name="product_color" id="product_color">
-
-//                     </select>
-//                 </form>
-
-//                     <button id="addToCart" type="submit " name="addToCart">Ajouter au panier</button>
-//             </div>
-//         </div>
-//         </div>
-//         `;
-//         const container = document.querySelector('.container');
-//         container.innerHTML = productDetails;
-
-//         });
-// }
-
-// cameras()
 
 /////////////////////////////////////////////////////////////////////
 
 // WORKING MODEL///////SINNGLE..TEDDY..FETCH///////SINNGLE..TEDDY..FETCH///////////
-// ........Recuperation de l'ID via Query String................................
+
+    // ........Recuperation de l'ID via Query String................................
 const queryStr_id = window.location.search;
 console.log(queryStr_id);
 
@@ -150,189 +13,173 @@ console.log(product);
 const id = product.get('_id');
 console.log(id);
 
+
+
 //........Recuperation de des donnees via fetch method................................
 const fetchedStream = fetch('http://localhost:3000/api/teddies/' + id);
 fetchedStream.then((response) => response.json())
 
 .then((product) => {
-console.log(product);
+    console.log(product);
 
-const name = product.name;
-const prodPrice = product.price;
-const prodDesc = product.description;
-const coloris = product.colors;
-const prodID = product._id;
-// const sub_total = quantity * Price;
+    const name = product.name;
+    const prodPrice = product.price;
+    const prodDesc = product.description;
+    const coloris = product.colors;
+    const prodID = product._id;
 
 
-console.log(prodID);
-//... Structuration et injection de la pesentation du produit...........
-const productDetails = `
-    <div class="produit__card__wrapper">
-    <div class="produit__card__content">
-        <img src="${product.imageUrl}" alt="${product.name}" class="productImg"></img>
-    <div class="container_text">
-            <h1 class="name"><span>${product.name}</span></h1>
-            <p class="price"><strong>Price : </strong><span>${product.price / 100 + ' €'}</span></p>
-            <p class="description"><strong>Description : </strong><span>${product.description}</span></p>
-         <div>
-            <form>
-                <label for="product_color"><strong>Choose a color :</strong></label>
-                <select name="product_color" id="theColorSpot">
+    //*******************Structuration et injection de la pesentation du produit***************************
+    const productDetails = `
+        <div class="produit__card__wrapper">
+        <div class="produit__card__content">
+            <img src="${product.imageUrl}" alt="${product.name}" class="productImg"></img>
+        <div class="container_text">
+                <h1 class="name"><span>${product.name}</span></h1>
+                <p class="price"><strong>Price : </strong><span>${product.price / 100 + ' €'}</span></p>
+                <p class="description"><strong>Description : </strong><span>${product.description}</span></p>
+            <div>
+                <form>
+                    <label for="product_color"><strong>Choose a color :</strong></label>
+                    <select name="product_color" id="theColorSpot">
 
-                </select>        
-            </form>
-            <br>
+                    </select>        
+                </form>
+                <br>
 
-            <form>
-            <label for="quantity"><strong>Quantity :</strong></label>
-            <select name="quantity" id="qtyChoice">
+                <form>
+                <label for="quantity"><strong>Quantity :</strong></label>
+                <select name="quantity" id="qtyChoice">
 
-            </select>
-            </form>
+                </select>
+                </form>
+            </div>
+                <button id="addToCart" type="submit " name="ajouterToCart">Add to cart</button>
         </div>
-            <button id="addToCart" type="submit " name="ajouterToCart">Add to cart</button>
-    </div>
-    </div>
-    </div>
+        </div>
+        </div>
+        `;
+
+    const container = document.querySelector('.container');
+    container.innerHTML = productDetails;
+
+
+///***********************Set Quantity of color choices in the dropdown*****************************
+
+    const colordropdwnQty = product.colors;
+    // console.log(colordropdwnQty);
+
+    let colorQtyStructure = [];
+
+    for(let j = 0; j < colordropdwnQty.length; j++) {
+
+        colorQtyStructure = 
+        colorQtyStructure + 
+                `
+                <option value="${colordropdwnQty[j]}">${colordropdwnQty[j]}</option>
+                `;
+
+        // console.log(colorQtyStructure);
+    }
+
+    const formSelect = document.querySelector('#theColorSpot');
+    formSelect.innerHTML = colorQtyStructure;
+
+    // console.log(formSelect);
+
+
+    //....Quantity.structure.........................////............ 
+    const containerOfQtyStructure = document.querySelector("#qtyChoice");
+
+    const qtyStructure = `
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
     `;
 
-const container = document.querySelector('.container');
-container.innerHTML = productDetails;
+    containerOfQtyStructure.innerHTML = qtyStructure;
 
 
-////.......Set Quantity of color choices in the dropdown........./////..//////.....
-const colordropdwnQty = product.colors;
-console.log(colordropdwnQty);
+//**********************************ADDING PRODUCTS TO CART***************************************
 
-let colorQtyStructure = [];
+    const formName = document.querySelector("#theColorSpot");
 
-for(let j = 0; j < colordropdwnQty.length; j++) {
+    ///....selection btn "Add to cart"........//////..........//...
+    const btnSendSelection = document.querySelector("#addToCart");
+    btnSendSelection.addEventListener("click", (e) => {
+        e.preventDefault();
 
-    colorQtyStructure = 
-       colorQtyStructure + 
-            `
-            <option value="${colordropdwnQty[j]}">${colordropdwnQty[j]}</option>
-            `;
+            ///....Customer's color selection.......///////......
+            const clientColorChoice = formName.value;
+            console.log(clientColorChoice);
 
-    // console.log(colorQtyStructure);
-}
+            //....Customer's Quantity selection.......///////......
+            const quantityChoice = containerOfQtyStructure.value;
+            console.log(quantityChoice);
 
-const formSelect = document.querySelector('#theColorSpot');
-formSelect.innerHTML = colorQtyStructure;
+            //.... Data elements to be retrieved from the form for confirmation........//////.......///
+            const prodDetails = {
+                name: product.name,
+                productId: prodID,
+                product_color: clientColorChoice,
+                quantity: quantityChoice,
+                Price: prodPrice,
+                sub_total: quantityChoice * prodPrice
+            };
+            // console.log(sub_total);
 
-console.log(formSelect);
-
-
-//....Quantity.structure.........................////............ 
-const containerOfQtyStructure = document.querySelector("#qtyChoice");
-
-const qtyStructure = `
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-`;
-
-containerOfQtyStructure.innerHTML = qtyStructure;
-
-
-
-
-//.................CART...................///////..................
-const formName = document.querySelector("#theColorSpot");
-
-
-///....selection btn "sent to cart"........//////..........//...
-const btnSendSelection = document.querySelector("#addToCart");
-btnSendSelection.addEventListener("click", (e) => {
-    e.preventDefault();
-
-        ///....Customer's color selection.......///////......
-        const clientColorChoice = formName.value;
-        console.log(clientColorChoice);
-
-        //....Customer's Quantity selection.......///////......
-        const quantityChoice = containerOfQtyStructure.value;
-        console.log(quantityChoice);
-
-
-
-        //.... Data elements to be retrieved from the form for confirmation........//////.......///
-        const prodDetails = {
-            name: product.name,
-            productId: prodID,
-            product_color: clientColorChoice,
-            quantity: quantityChoice,
-            Price: prodPrice,
-            sub_total: quantityChoice * prodPrice
-        };
-        // console.log(sub_total);
-
-        ///...Setting up function of the "put in the cart" popup... this function is called below in the "If ()".
-        const confirmationMessage = () => {
-            if (window.confirm(`           ${name} has been added to your cart. 
-            Press OK to view cart details or Cancel to continue shopping`)) {
-                window.location.href = "cart.html";
-            } else {
-                window.location.href = "product-list.html";
+            ///...Setting up function of the "put in the cart" popup... this function is called below in the "If ()".
+            const confirmationMessage = () => {
+                if (window.confirm(`           ${name} has been added to your cart. 
+                Press OK to view cart details or Cancel to continue shopping`)) {
+                    window.location.href = "cart.html";
+                } else {
+                    window.location.href = "product-list.html";
+                }
             }
-        }
+
+            /////....Transfer selected product data from form/btn to local storage (this must be in a variable)...../////....///./////...
+            ////But first we must check if a copy of the data is not already in the local Storage (using the Boolean effect - if there is somthing, it will return "true").
+            /// RULE... Arr/Obj---> thru--JSON.stringify---> to transfer data to local Storage.
+            /// RULE... local Storage---> thru--JSON.parse---> to get Arr/Obj from local Storage.
+            
+            //Creation of variable in which the selected keys and values will be inserted:
+            let productsInLocalStorage = JSON.parse(localStorage.getItem("products"));
+            // console.log(prodToLocalStorage);
+
+            if(productsInLocalStorage) {   //..checks if item is already in local storage. Comes back 'false/null'... true if not....
+                productsInLocalStorage.push(prodDetails);
+                //.....Setup to send variable storage to local storage.....
+                localStorage.setItem("products", JSON.stringify(productsInLocalStorage));
+                confirmationMessage ();
+                console.log(productsInLocalStorage);
 
 
-        /////....Transfer selected product data from form/btn to local storage (this must be in a variable)...../////....///./////...
-        ////But first we must check if a copy of the data is not already in the local Storage (using the Boolean effect - if there is somthing, it will return "true").
-        /// RULE... Arr/Obj---> thru--JSON.stringify---> to transfer data to local Storage.
-        /// RULE... local Storage---> thru--JSON.parse---> to get Arr/Obj from local Storage.
-        
-        //Creation of variable in which the selected keys and values will be inserted:
-        let prodInLocalStorage = JSON.parse(localStorage.getItem("productToOrder"));
-        // console.log(prodToLocalStorage);
-
-        if(prodInLocalStorage) {   //..checks if item is already in local storage. Comes back 'false/null'... true if not....
-            prodInLocalStorage.push(prodDetails);
-            //.....Setup to send variable storage to local storage.....
-            localStorage.setItem("productToOrder", JSON.stringify(prodInLocalStorage));
-            confirmationMessage ();
-            console.log(prodInLocalStorage);
-
-
-        } else {
-            prodInLocalStorage = [];
-            prodInLocalStorage.push(prodDetails);
-            //.....Setup to send variable storage to local storage.....
-            localStorage.setItem("productToOrder", JSON.stringify(prodInLocalStorage));
-            confirmationMessage ();
-            console.log(prodInLocalStorage);
- 
-        //     prodInLocalStorage.forEach(item => {
-        //         if(product.name == item.name){
-        //             product.quantity = item.quanity += 1;
-        //         } else {
-        //             prodInLocalStorage.push(product)
-        //         }
-
-        //     });
-        }
-
+            } else {
+                productsInLocalStorage = [];
+                productsInLocalStorage.push(prodDetails);
+                //.....Setup to send variable storage to local storage.....
+                localStorage.setItem("products", JSON.stringify(productsInLocalStorage));
+                confirmationMessage ();
+                console.log(productsInLocalStorage);
+    
+            }
 
     });
-
-
-
 
 });
 
 
 
 //****Creating Quantity count in menu*******************************************************
-let prodInLocalStorage = JSON.parse(localStorage.getItem("productToOrder"));
-console.log(prodInLocalStorage);
+let productsInLocalStorage = JSON.parse(localStorage.getItem("products"));
+console.log(productsInLocalStorage);
 
 const totalQty = document.querySelector(".container_btnMenuPanier");
 
-if (prodInLocalStorage === null || prodInLocalStorage == 0) {
+if (productsInLocalStorage === null || productsInLocalStorage == 0) {
 
     const prodInCartQty = `
     <i class="fa fa-shopping-cart"></i>
@@ -346,9 +193,9 @@ if (prodInLocalStorage === null || prodInLocalStorage == 0) {
     const stockingQuantities = [];
 
     // Getting the quantities....
-    for(s = 0; s < prodInLocalStorage.length; s++) {
+    for(s = 0; s < productsInLocalStorage.length; s++) {
         
-        let quantitiesInTheCart = prodInLocalStorage[s].quantity * 1;
+        let quantitiesInTheCart = productsInLocalStorage[s].quantity * 1;
         stockingQuantities.push(quantitiesInTheCart);
 
         console.log(stockingQuantities);
@@ -370,38 +217,6 @@ if (prodInLocalStorage === null || prodInLocalStorage == 0) {
     totalQty.innerHTML = prodInCartQty;
 
 }
-
-
-
-
-///...Set up quantity of individual products...//////..............
-// let qty = document.querySelector("#qtyChoice");
-
-// const quantity = [];
-
-// for (a = 0; a < prodInLocalStorage.length; a += 1) {
-//     if (prodInLocalStorage[a].name === name) {
-
-//         prodInLocalStorage[a].quantity += 1
-
-//         console.log(prodInLocalStorage[a].quantity);
-        
-//     }
-//     // quantity.push(quantity)
-
-
-// }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

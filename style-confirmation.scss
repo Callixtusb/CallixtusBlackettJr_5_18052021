@@ -1,0 +1,286 @@
+@import 'sass/Utils/variables';
+@import 'sass/Utils/mixins';
+
+
+
+
+
+body {
+    margin: 0 auto;
+    font-family: $font-text;
+}
+ 
+ // HEADER //
+header {
+    @include header;
+}
+
+.total__qty {
+    margin-right: 10px;
+    color: blueviolet;
+  }
+
+// MENU //
+.introduction {
+    text-align: center;
+    z-index: 101;
+    margin-bottom: 40px;
+    font-size: 20px;
+    line-height: -20px;
+}
+
+.menu {
+    position: relative;
+    z-index: 98;
+    top: 125px;
+    width: 100%;
+    background-color: #ffff;
+  
+    @include breakpoint (laptop) {
+     position: fixed;
+     top: 18px;
+     z-index: 99;
+     background-color: transparent;
+     }
+  
+     &__wrapper {
+      width: 100%;
+     }
+  
+     &__content {
+        width: 100%;
+        margin: auto;
+     } 
+ 
+  
+     &__buttons {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 25px;
+      padding-left: 0px;
+      margin-top: 45px;
+      margin-bottom: 30px;
+      width: 100%;
+      list-style-type: none;
+      // Start counter //
+      counter-reset: list;
+          //..........................................
+    @include breakpoint (laptop) {
+  
+      justify-content: flex-end;
+    //   gap: 15px;
+      margin-top: 26px;
+      margin-bottom: 55px;
+     }
+     }
+  
+     li:hover {
+      filter: drop-shadow(10px 12px 10px #0800002e);
+     }
+  
+     li {
+      // Increment counter on each list item //
+      counter-increment: list;
+      @include Drop-shadow-pour-btn-de-selection;
+      transition: all 1s;
+     }
+  
+      //Home icon//
+     .fa-shopping-cart {
+      @include icon-btn-fonctionnement-std;
+      transition: all 1s;
+  
+         @include breakpoint (laptop) {
+           padding: 10px 3px 11px 10px;
+  
+          }
+     }
+  
+      //Home button text//
+     &__home {
+      @include btn-fonctionnement-std;    
+      transition: all 1s;
+  
+         @include breakpoint (laptop) {
+           padding: 9px 15px 9px 10px;
+  
+           }
+     }
+  
+      //Produits icon//
+     .fa-list-ul {
+      @include icon-btn-fonctionnement-std;
+      transition: all 1s;
+  
+         @include breakpoint (laptop) {
+           padding: 10px 0px 11px 10px;;
+           }
+     }
+  
+      //Produits button text//
+     &__produits {
+      @include btn-fonctionnement-std;
+      transition: all 1s;
+  
+      @include breakpoint (laptop) {
+        padding: 9px 15px 9px 10px;
+        }
+     }
+  
+      //Panier icon
+     .fa-store {
+      @include icon-btn-fonctionnement-std;
+      transition: all 1s;
+  
+         @include breakpoint (laptop) {
+           padding: 10px 0px 11px 10px;
+  
+           }
+     }
+  
+      //Panier button text//
+     &__panier {
+      @include btn-fonctionnement-std;
+      transition: all 1s;
+  
+      @include breakpoint (laptop) {
+        padding: 9px 15px 9px 0px;
+  
+        }
+     }
+  
+      // HOME HOVER //
+     .fa-shopping-cart:hover {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+     li:hover .menu__home {
+      background-color: $title-bkgnd-color;
+     }
+   
+     .menu__home:hover {
+      background-color: $title-bkgnd-color;
+     }
+  
+     li:hover .fa-shopping-cart {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+      // PRODUITS HOVER //
+     .fa-list-ul:hover {
+      background-color: $title-bkgnd-color;
+      color: #9356DC;
+     }
+  
+     li:hover .menu__produits {
+      background-color: $title-bkgnd-color;
+     }
+  
+     .menu__produits:hover {
+      background-color: $title-bkgnd-color;
+     }
+  
+     li:hover .fa-list-ul {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+      // PANIER HOVER //
+     .fa-store:hover {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+     li:hover .menu__panier {
+      background-color: $title-bkgnd-color;
+     }
+     
+     .menu__panier:hover {
+      background-color: $title-bkgnd-color;
+     }
+  
+     li:hover .fa-store {
+      background-color: $title-bkgnd-color;
+      color: $primary-color;
+     }
+  
+  }
+
+
+  // CONFIRMATION CONTENT //@include
+
+  .confirmation {
+    margin-top: 200px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 50%;
+  
+    &__order-summary, &__order-details {
+        padding: 0px 20px 30px 10px;
+        border: solid 1px;
+        border-radius: 20px;
+        width: 40%;
+    }
+
+    &__blocks {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+        flex-wrap: wrap
+    }
+
+    &__order-details {
+        background-color: $primary-bkgnd-color;
+    }
+
+    &__summary_text_bloc {
+        margin-top: 30px;
+    }
+
+    &__details_subtotal, 
+    &__details_tva, 
+    &__details_total,
+    &__details_firstName,
+    &__details_lastName,
+    &__details_address,
+    &__details_city {
+        margin-left: 15px;
+    }
+
+    &__details_Facturation {
+        margin-top: 25px;
+    }
+
+  }
+
+
+
+
+
+  // FOOTER //
+footer {
+    @include footer;
+ 
+    // Tablet portrait & Desktop ////////////////////////////
+     @include breakpoint (laptop) {
+ 
+        .footer__main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: baseline;
+        bottom: 0px;
+       }
+     }  
+ 
+     @include breakpoint (laptop) {
+       position: relative;
+       width: 100%;
+       bottom: 0px;
+    }
+ 
+  }

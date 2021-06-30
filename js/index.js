@@ -1,10 +1,10 @@
 //****Creating Quantity count in menu*******************************************************
-let prodInLocalStorage = JSON.parse(localStorage.getItem("productToOrder"));
-console.log(prodInLocalStorage);
+let productsInLocalStorage = JSON.parse(localStorage.getItem("products"));
+console.log(productsInLocalStorage);
 
 const totalQty = document.querySelector(".container_btnMenuPanier");
 
-if (prodInLocalStorage === null || prodInLocalStorage == 0) {
+if (productsInLocalStorage === null || productsInLocalStorage == 0) {
 
     const prodInCartQty = `
     <i class="fa fa-shopping-cart"></i>
@@ -18,9 +18,9 @@ if (prodInLocalStorage === null || prodInLocalStorage == 0) {
     const stockingQuantities = [];
 
     // Getting the quantities....
-    for(s = 0; s < prodInLocalStorage.length; s++) {
+    for(s = 0; s < productsInLocalStorage.length; s++) {
         
-        let quantitiesInTheCart = prodInLocalStorage[s].quantity * 1;
+        let quantitiesInTheCart = productsInLocalStorage[s].quantity * 1;
         stockingQuantities.push(quantitiesInTheCart);
 
         console.log(stockingQuantities);

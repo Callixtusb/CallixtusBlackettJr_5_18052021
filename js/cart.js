@@ -147,12 +147,16 @@ epmtyCart ();
 
 function priceCalculations () {
 //...Indicate if the cart is empty otherwise calculate individual and total prices..
+const prodAdditionToCart = document.querySelector(".container__recap--in-Cart");
+
 if (productsInLocalStorage === null || productsInLocalStorage == 0) {
     let cartIsEmpty =`
     <div class="panierVideMessage">
     <div>Votre panier est vide.</div>
     </div>`;
+    
     prodAdditionToCart.innerHTML = cartIsEmpty;
+    // prodAdditionToCart.insertAdjacentHTML("afterbegin", cartIsEmpty);
 
 } else {    
     //.....stocking the prices

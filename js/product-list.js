@@ -5,7 +5,7 @@
 
 async function getProductData() {
 
-    const prodStream = await fetch('https://localhost:3000/api/teddies');
+    const prodStream = await fetch('http://localhost:3000/api/teddies');
     const productPosts = await prodStream.json();
 
     console.log(productPosts);

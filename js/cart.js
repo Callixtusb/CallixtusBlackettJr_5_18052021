@@ -1,15 +1,15 @@
 
-//Creation of variable in which the selected keys and values will be inserted:
-/// RULE... Arr/Obj---> thru--JSON.stringify---> to transfer data to local Storage.
-/// RULE... local Storage---> thru--JSON.parse---> to get Arr/Obj from local Storage.
 
-
+//***************************************************PARSING LOCAL STORAGE FOR PAGE CODE*********************************************************/
 let productsInLocalStorage = JSON.parse(localStorage.getItem("products"));
 // console.log(productsInLocalStorage);
 
 
-function addProductsToCart () {
-    //Alimentation du panier..............
+//****************************ADDING INDIVIDUAL ITEMS TO CART & INDICATING IF CART IS EMPTY OR DISPLAYING THE NUMBER ITEMS PRESENT************************************
+
+function addProductsToCart () {     
+    
+    //**********ADDING ITEMS TO CART***************
     const prodAdditionToCart = document.querySelector(".container__recap--in-Cart");
     const totalQty = document.querySelector(".container_btnMenuPanier");
 
@@ -28,7 +28,6 @@ function addProductsToCart () {
 
         totalQty.innerHTML = prodInCartQty;
 
-        
     } else {
 
         let prodInCart = [];
@@ -49,8 +48,9 @@ function addProductsToCart () {
                 const prodAddToCart = document.querySelector(".container__recap--in-Cart");
                 prodAddToCart.innerHTML = prodInCart;
         }
+        console.log(prodInCart);
 
-
+        //******************CALCULATING INDIVIDUAL QUANTITIES***************
         //.....stocking the Qty amount....
         const stockingQuantities = [];
 
@@ -58,10 +58,8 @@ function addProductsToCart () {
         for(s = 0; s < productsInLocalStorage.length; s++) {
             let quantitiesInTheCart = productsInLocalStorage[s].quantity * 1;
             stockingQuantities.push(quantitiesInTheCart);
-
-            // console.log(stockingQuantities);
         }
-
+        //******************CALCULATING TOTAL QUANTITY***************
         //...Use of ".Reduce" method to calculte the total Qty :
             //...ex.: const reducer = (accumulator, currentalue) => accumulator + currentValue;
             const reducer = (accumulator, currentValue) => accumulator + currentValue
@@ -74,9 +72,7 @@ function addProductsToCart () {
             <a href="cart.html" class="menu__panier"><b class="total__qty">(${totalQties})</b>Panier</a>`;
 
             totalQty.innerHTML = prodInCartQty;
-
             // console.log(totalQties);
-
     };
 };
 addProductsToCart ();
@@ -92,7 +88,6 @@ function removeItemFromCart() {
 
     for (r = 0; r < btnSupprimer.length; r++) {
 
-        // const itemColor = productsInLocalStorage[r].product_color;
         const itemID = productsInLocalStorage[r].productId;
         // console.log(itemID);
 
@@ -103,13 +98,11 @@ function removeItemFromCart() {
 
             localStorage.setItem("products", JSON.stringify(productsInLocalStorage));
             window.location.href = "cart.html";
-
         });
-
     }
 };
 removeItemFromCart();
-console.log(productsInLocalStorage);
+// console.log(productsInLocalStorage);
 
 
 //****************************DELETE BUTTON TO EMPTY CART************************************
@@ -143,7 +136,7 @@ function epmtyCart() {
 epmtyCart ();
 
 
-//***************************QUANTITIES AND TOTAL CALCULATIONS******************************
+//***************************INDIVIDUAL AND TOTAL PRICE CALCULATIONS******************************
 
 function priceCalculations () {
 //...Indicate if the cart is empty otherwise calculate individual and total prices..
@@ -158,7 +151,9 @@ if (productsInLocalStorage === null || productsInLocalStorage == 0) {
     prodAdditionToCart.innerHTML = cartIsEmpty;
     // prodAdditionToCart.insertAdjacentHTML("afterbegin", cartIsEmpty);
 
-} else {    
+} else { 
+    
+    //******************INDIVIDUAL PRICE CALCULATION***************
     //.....stocking the prices
     const stockingPrices = [];
 
@@ -167,9 +162,10 @@ if (productsInLocalStorage === null || productsInLocalStorage == 0) {
         let pricesInTheCart = productsInLocalStorage[s].quantity * productsInLocalStorage[s].Price;
         stockingPrices.push(pricesInTheCart);
 
-        // console.log(stockingPrices);
+        console.log(`Prix indiv :` + stockingPrices);
     }
 
+    //******************TOTAL PRICE CALCULATION***************
     //...Use of ".Reduce" method to calculte the total price :
         //...ex.: const reducer = (accumulator, currentalue) => accumulator + currentValue;
         const reducer = (accumulator, currentValue) => accumulator + currentValue
@@ -185,12 +181,10 @@ if (productsInLocalStorage === null || productsInLocalStorage == 0) {
             <span class="price_total"><b>${totalPrice / 100 + ' €'}</b></span>
         `;
         cartTotalPrice.innerHTML = containerCartTotalPrice;
-        // console.log(totalPrice);
+        console.log(`Prix total :` + totalPrice);
 }
 };
 priceCalculations ();
-
-
 
 
 /////******************************ORDER FORM*********************************** */
@@ -230,12 +224,9 @@ const showHtmlForm = () => {
 
         </form>
     </div>  
-    
-
     `;
 
     containerCommandeForm.innerHTML = formStructure
-
 };
 showHtmlForm();
 
@@ -248,6 +239,7 @@ function validateUserInput() {
 //........Getting input-info from form and send to local storage :
 
     const btnCheckout = document.querySelector(".btnCheckout");
+
     btnCheckout.addEventListener("click", (e) => {
         e.preventDefault();
 
@@ -277,7 +269,7 @@ function validateUserInput() {
                 return /^([A-Za-z \t]{3,25})?([-]{0,1})?([A-Za-z \t]{3,25})$/.test(value);
             }
 
-            //..Function to handle appearance of error message above each "fullname" field.......
+            //..Function to handle appearance of error message above each input field.......
             function inputErrorMessageDisappear (querySelectorId){
                 document.querySelector(`#${querySelectorId}`).textContent = "";
             };
@@ -361,7 +353,7 @@ function validateUserInput() {
                     inputErrorMessageDisappear("emailError");
                     return true;
                 } else {
-                    alert("Your email is not valid");
+                    alert("Votre email n'est pas valid");
                     inputErrorMessage("emailError");
                     return false;
                 };
@@ -377,117 +369,103 @@ function validateUserInput() {
 
             //..Sending the input data to the local storage if argument "if" returns "true":
             localStorage.setItem("contact", JSON.stringify(contact));
+
+
+
+            //************************BUILD OBJECT OF PRODUCT & CONTACT ORDER INFORMATION*******************************************/
+            const infoToSendToServer = {
+            
+                contact : {   
+                firstName: document.querySelector("#firstName").value,
+                lastName: document.querySelector("#lastName").value,
+                address: document.querySelector("#address").value,
+                city: document.querySelector("#city").value,
+                email: document.querySelector("#email").value
+                },
+    
+                products : []
+            };
+    
+            let productIDs = JSON.parse(localStorage.getItem("products"));
+                productIDs.forEach(objectTeddies => { 
+                infoToSendToServer.products.push(objectTeddies.productId);
+            });
+            console.log(infoToSendToServer);  
+            
+            //...Sending product and user data to server.......
+            let sendToServer = fetch('http://localhost:3000/api/teddies/order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                mode:'cors',
+                body: JSON.stringify(infoToSendToServer)
+            });
+                    //...View response from server.......
+                    sendToServer.then(async(response)=>{
+                        try{
+                            const content = await response.json();
+                            console.log("content from server:");
+                            console.log(content);
+                            console.log(response);
+    
+                            if(response.ok) {
+                                console.log(`Results of response.ok : ${response.ok}`);
+    
+                                //..Get Order Id...
+                                console.log("Order Id from server :");
+                                console.log(content.orderId);
+    
+                                //..Put Order Id in the local storage...
+                                localStorage.setItem("orderId", content.orderId);
+    
+                                //..Go to confirmation page...
+                                window.location.href = "confirmation.html";
+    
+                            }else {
+                                console.log(`Response status : ${response.status}`);
+                                alert(`Problem with the server : ${response.status}`);
+                            };
+    
+    
+                        }catch(e){
+                            console.log(e);
+                        }
+                    })
+            // ******************************************************************************************************
+            
             }else{
-                alert("Please review and correct your entries.");
+                alert("Veuillez revoir et corriger votre saisi.");
             }
-
     });
-
 }
 validateUserInput();
 
 
 
-//************************LOAD FIELD WITH USER INFO**********************************************/
+//************************LOAD FIELD WITH USER INFO FROM LOCAL STORAGE**********************************************/
 
 function fieldReloadWithUserInput () {
-///....Objective : Keep user input in fields after page reloads - Hence, get local storage to keep field populated.
-//...Putting local storage data (strings) into a variable
-const loadedData = localStorage.getItem("contact");
+    ///....Objective : Keep user input in fields after page reloads - Hence, get local storage to keep field populated.
+    //...Putting local storage data (strings) into a variable
+    const loadedData = localStorage.getItem("contact");
 
-//...Convert the strings into an Js object.
-const loadedDataInField = JSON.parse(loadedData);
+    //...Convert the strings into an Js object.
+    const loadedDataInField = JSON.parse(loadedData);
 
-///....Keep user details from disappearing after a page reload - Populate the field.
-if(loadedDataInField == null) {
-    console.log("Local storage is empty");
-    } else {
+    ///....Keep user details from disappearing after a page reload - Populate the field.
+    if(loadedDataInField == null) {
+        console.log("Le formulaire est vide");
+        } else {
 
-    document.querySelector("#firstName").value = loadedDataInField.firstName;
-    document.querySelector("#lastName").value = loadedDataInField.lastName;
-    document.querySelector("#address").value = loadedDataInField.address;   
-    document.querySelector("#city").value = loadedDataInField.city;     
-    document.querySelector("#email").value = loadedDataInField.email;
-    }
+        document.querySelector("#firstName").value = loadedDataInField.firstName;
+        document.querySelector("#lastName").value = loadedDataInField.lastName;
+        document.querySelector("#address").value = loadedDataInField.address;   
+        document.querySelector("#city").value = loadedDataInField.city;     
+        document.querySelector("#email").value = loadedDataInField.email;
+        }
 
-    // console.log(loadedDataInField);
+        // console.log(loadedDataInField);
 
 }
 fieldReloadWithUserInput();
-    
-
-
-
-
-//************************BUILD OBJECT OF PRODUCT & CONTACT ORDER INFORMATION**********************************************/
-function OrderInfo() {
-
-    let btnCheckout = document.querySelector(".btnCheckout");
-    btnCheckout.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        //...Building Contact object & Product array...
-        const infoToSendToServer = {
-            
-            contact : {   
-            firstName: document.querySelector("#firstName").value,
-            lastName: document.querySelector("#lastName").value,
-            address: document.querySelector("#address").value,
-            city: document.querySelector("#city").value,
-            email: document.querySelector("#email").value
-            },
-
-            products : []
-        };
-
-        let productIDs = JSON.parse(localStorage.getItem("products"));
-            productIDs.forEach(objectTeddies => { 
-            infoToSendToServer.products.push(objectTeddies.productId);
-        });
-        console.log(infoToSendToServer);  
-        
-        //...Sending product and user data to server.......
-        let sendToServer = fetch('http://localhost:3000/api/teddies/order', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            mode:'cors',
-            body: JSON.stringify(infoToSendToServer)
-        });
-                //...View response from server.......
-                sendToServer.then(async(response)=>{
-                    try{
-                        const content = await response.json();
-                        console.log("content from server:");
-                        console.log(content);
-                        console.log(response);
-
-                        if(response.ok) {
-                            console.log(`Results of response.ok : ${response.ok}`);
-
-                            //..Get Order Id...
-                            console.log("Order Id from server :");
-                            console.log(content.orderId);
-
-                            //..Put Order Id in the local storage...
-                            localStorage.setItem("orderId", content.orderId);
-
-                            //..Go to confirmation page...
-                            window.location.href = "confirmation.html";
-
-                        }else {
-                            console.log(`Response status : ${response.status}`);
-                            alert(`Problem with the server : ${response.status}`);
-                        };
-
-
-                    }catch(e){
-                        console.log(e);
-                    }
-                })
-
-    });
-}
-OrderInfo();
-console.log("Object sent to server:");

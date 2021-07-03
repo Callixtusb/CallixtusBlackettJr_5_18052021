@@ -1,20 +1,18 @@
 
-
-
 // WORKING MODEL///////SINNGLE..TEDDY..FETCH///////SINNGLE..TEDDY..FETCH///////////
 
+function recupProductIdAndDisplayProductDetails() {
+
     // ........Recuperation de l'ID via Query String................................
-const queryStr_id = window.location.search;
-console.log(queryStr_id);
+    const queryStr_id = window.location.search;
+    console.log(queryStr_id);
 
-const product = new URLSearchParams(queryStr_id);
-console.log(product);
+    const product = new URLSearchParams(queryStr_id);
+    console.log(product);
 
-const id = product.get('_id');
-console.log(id);
-
-
-
+    const id = product.get('_id');
+    console.log(id);
+       
 //........Recuperation de des donnees via fetch method................................
 const fetchedStream = fetch('http://localhost:3000/api/teddies/' + id);
 fetchedStream.then((response) => response.json())
@@ -27,17 +25,17 @@ fetchedStream.then((response) => response.json())
     const prodDesc = product.description;
     const coloris = product.colors;
     const prodID = product._id;
-
+    const prodImg = product.imageUrl;
 
     //*******************Structuration et injection de la pesentation du produit***************************
     const productDetails = `
         <div class="produit__card__wrapper">
         <div class="produit__card__content">
-            <img src="${product.imageUrl}" alt="${product.name}" class="productImg"></img>
+            <img src="${prodImg}" alt="${name}" class="productImg"></img>
         <div class="container_text">
-                <h1 class="name"><span>${product.name}</span></h1>
-                <p class="price"><strong>Price : </strong><span>${product.price / 100 + ' €'}</span></p>
-                <p class="description"><strong>Description : </strong><span>${product.description}</span></p>
+                <h1 class="name"><span>${name}</span></h1>
+                <p class="price"><strong>Price : </strong><span>${prodPrice / 100 + ' €'}</span></p>
+                <p class="description"><strong>Description : </strong><span>${prodDesc}</span></p>
             <div>
                 <form>
                     <label for="product_color"><strong>Choose a color :</strong></label>
@@ -54,7 +52,7 @@ fetchedStream.then((response) => response.json())
                 </select>
                 </form>
             </div>
-                <button id="addToCart" type="submit " name="ajouterToCart">Add to cart</button>
+                <button id="addToCart" type="submit " name="ajouterToCart">Ajouter au panier</button>
         </div>
         </div>
         </div>
@@ -66,7 +64,7 @@ fetchedStream.then((response) => response.json())
 
 ///***********************Set Quantity of color choices in the dropdown*****************************
 
-    const colordropdwnQty = product.colors;
+    const colordropdwnQty = coloris;
     // console.log(colordropdwnQty);
 
     let colorQtyStructure = [];
@@ -108,6 +106,7 @@ fetchedStream.then((response) => response.json())
 
     ///....selection btn "Add to cart"........//////..........//...
     const btnSendSelection = document.querySelector("#addToCart");
+
     btnSendSelection.addEventListener("click", (e) => {
         e.preventDefault();
 
@@ -142,79 +141,80 @@ fetchedStream.then((response) => response.json())
 
             /////....Transfer selected product data from form/btn to local storage (this must be in a variable)...../////....///./////...
             ////But first we must check if a copy of the data is not already in the local Storage (using the Boolean effect - if there is somthing, it will return "true").
-            /// RULE... Arr/Obj---> thru--JSON.stringify---> to transfer data to local Storage.
+            /// RULE... Arr/Obj---> thru--JSON.stringify---> to transfer data into local Storage.
             /// RULE... local Storage---> thru--JSON.parse---> to get Arr/Obj from local Storage.
             
-            //Creation of variable in which the selected keys and values will be inserted:
+            //Creation of variable in which the selected keys and values will be inserted from the local storage.  But if there's nothing in the local storage, an array (see in argument "else" below) will be initiated in order to receive new prodct selections.
             let productsInLocalStorage = JSON.parse(localStorage.getItem("products"));
             // console.log(prodToLocalStorage);
 
-            if(productsInLocalStorage) {   //..checks if item is already in local storage. Comes back 'false/null'... true if not....
+            // Function to add selected product(s) to local storage
+            const addProdToLocalStorage = () => {
+                //...add product details to the variable storsgre..
                 productsInLocalStorage.push(prodDetails);
-                //.....Setup to send variable storage to local storage.....
+                //.....Setup to send variable storage to "key" (products) of the local storage.....
                 localStorage.setItem("products", JSON.stringify(productsInLocalStorage));
-                confirmationMessage ();
-                console.log(productsInLocalStorage);
+            };
+            
+                //..if there are items in the local storage. 
+                if(productsInLocalStorage) {   
+                    addProdToLocalStorage();
+                    confirmationMessage ();
 
-
-            } else {
-                productsInLocalStorage = [];
-                productsInLocalStorage.push(prodDetails);
-                //.....Setup to send variable storage to local storage.....
-                localStorage.setItem("products", JSON.stringify(productsInLocalStorage));
-                confirmationMessage ();
-                console.log(productsInLocalStorage);
-    
-            }
-
+                //..if there are no item in the local storage. 
+                } else {
+                    productsInLocalStorage = [];
+                    addProdToLocalStorage();
+                    confirmationMessage ();
+                }
     });
 
 });
 
+}
+recupProductIdAndDisplayProductDetails();
 
 
-//****Creating Quantity count in menu*******************************************************
-let productsInLocalStorage = JSON.parse(localStorage.getItem("products"));
-console.log(productsInLocalStorage);
 
-const totalQty = document.querySelector(".container_btnMenuPanier");
-
-if (productsInLocalStorage === null || productsInLocalStorage == 0) {
-
-    const prodInCartQty = `
-    <i class="fa fa-shopping-cart"></i>
-    <a href="cart.html" class="menu__panier"><b class="total__qty">(0)</b>Panier</a>`;
-
-    totalQty.innerHTML = prodInCartQty;
-
-} else {
-
-    //.....stocking the Qty
-    const stockingQuantities = [];
-
-    // Getting the quantities....
-    for(s = 0; s < productsInLocalStorage.length; s++) {
-        
-        let quantitiesInTheCart = productsInLocalStorage[s].quantity * 1;
-        stockingQuantities.push(quantitiesInTheCart);
-
-        console.log(stockingQuantities);
-    }
-
-   //...Use of ".Reduce" method to calculte the total Qty :
-    //...ex.: const reducer = (accumulator, currentalue) => accumulator + currentValue;
-    const reducer = (accumulator, currentValue) => accumulator + currentValue
-    const totalQties = stockingQuantities.reduce(reducer, 0)
-
-    console.log(totalQties);
+function qtyCountInMenu() {
+    //****Creating Quantity count in menu*******************************************************
+    let productsInLocalStorage = JSON.parse(localStorage.getItem("products"));
 
     const totalQty = document.querySelector(".container_btnMenuPanier");
 
-    const prodInCartQty = `
-    <i class="fa fa-shopping-cart"></i>
-    <a href="cart.html" class="menu__panier"><b class="total__qty">(${totalQties})</b>Panier</a>`;
+        if (productsInLocalStorage === null || productsInLocalStorage == 0) {
 
-    totalQty.innerHTML = prodInCartQty;
+            const prodInCartQty = `
+            <i class="fa fa-shopping-cart"></i>
+            <a href="cart.html" class="menu__panier"><b class="total__qty">(0)</b>Panier</a>`;
 
+            totalQty.innerHTML = prodInCartQty;
+            console.log('LocalStorage is empty');
+
+        } else {
+
+            //.....stocking the Qty
+            const stockingQuantities = [];
+
+            // Getting the quantities....
+            for(s = 0; s < productsInLocalStorage.length; s++) {
+                
+                let quantitiesInTheCart = productsInLocalStorage[s].quantity * 1;
+                stockingQuantities.push(quantitiesInTheCart);
+            }
+            console.log(stockingQuantities);
+
+            //...Use of ".Reduce" method to calculte the total Qty :
+            //...ex.: const reducer = (accumulator, currentalue) => accumulator + currentValue;
+            const reducer = (accumulator, currentValue) => accumulator + currentValue
+            const totalQties = stockingQuantities.reduce(reducer, 0)
+
+            const totalQty = document.querySelector(".container_btnMenuPanier");
+            const prodInCartQty = `
+            <i class="fa fa-shopping-cart"></i>
+            <a href="cart.html" class="menu__panier"><b class="total__qty">(${totalQties})</b>Panier</a>`;
+
+            totalQty.innerHTML = prodInCartQty;
+    }
 }
-
+qtyCountInMenu(); 

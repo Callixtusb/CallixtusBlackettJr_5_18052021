@@ -83,26 +83,26 @@ addProductsToCart ();
 function removeItemFromCart() {
 
     let btnSupprimer = document.querySelectorAll(".btnSupprimer");
-    // console.log(btnSupprimer);   
-
 
     for (r = 0; r < btnSupprimer.length; r++) {
 
         const itemID = productsInLocalStorage[r].productId;
-        // console.log(itemID);
+        const itemColor = productsInLocalStorage[r].product_color;
 
         btnSupprimer[r].addEventListener("click" , (event) => {
             event.preventDefault();
 
-            productsInLocalStorage = productsInLocalStorage.filter(item => item.productId !== itemID);
-
+            productsInLocalStorage = productsInLocalStorage.filter((element) => element.productId !== itemID || element.product_color !== itemColor);
+           
+            // console.log(productsInLocalStorage);
+            
             localStorage.setItem("products", JSON.stringify(productsInLocalStorage));
             window.location.href = "cart.html";
         });
     }
 };
 removeItemFromCart();
-// console.log(productsInLocalStorage);
+
 
 
 //****************************DELETE BUTTON TO EMPTY CART************************************

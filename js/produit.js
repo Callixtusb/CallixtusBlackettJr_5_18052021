@@ -13,109 +13,109 @@ function recupProductIdAndDisplayProductDetails() {
     const id = product.get('_id');
     console.log(id);
        
-//........Recuperation de des donnees via fetch method................................
-const fetchedStream = fetch('http://localhost:3000/api/teddies/' + id);
-fetchedStream.then((response) => response.json())
+    //........Recuperation de des donnees via fetch method................................
+    const fetchedStream = fetch('http://localhost:3000/api/teddies/' + id);
+    fetchedStream.then((response) => response.json())
 
-.then((product) => {
-    console.log(product);
+    .then((product) => {
+        console.log(product);
 
-    const name = product.name;
-    const prodPrice = product.price;
-    const prodDesc = product.description;
-    const coloris = product.colors;
-    const prodID = product._id;
-    const prodImg = product.imageUrl;
+        const name = product.name;
+        const prodPrice = product.price;
+        const prodDesc = product.description;
+        const coloris = product.colors;
+        const prodID = product._id;
+        const prodImg = product.imageUrl;
 
-    //*******************Structuration et injection de la pesentation du produit***************************
-    const productDetails = `
-        <div class="produit__card__wrapper">
-        <div class="produit__card__content">
-            <img src="${prodImg}" alt="${name}" class="productImg"></img>
-        <div class="container_text">
-                <h1 class="name"><span>${name}</span></h1>
-                <p class="price"><strong>Price : </strong><span>${prodPrice / 100 + ' €'}</span></p>
-                <p class="description"><strong>Description : </strong><span>${prodDesc}</span></p>
-            <div>
-                <form>
-                    <label for="product_color"><strong>Choose a color :</strong></label>
-                    <select name="product_color" id="theColorSpot">
 
-                    </select>        
-                </form>
-                <br>
+        //*******************Structuration et injection de la pesentation du produit***************************
+        const productDetails = `
+            <div class="produit__card__wrapper">
+            <div class="produit__card__content">
+                <img src="${prodImg}" alt="${name}" class="productImg"></img>
+            <div class="container_text">
+                    <h1 class="name"><span>${name}</span></h1>
+                    <p class="price"><strong>Price : </strong><span>${prodPrice / 100 + ' €'}</span></p>
+                    <p class="description"><strong>Description : </strong><span>${prodDesc}</span></p>
+                <div>
+                    <form>
+                        <label for="product_color"><strong>Choose a color :</strong></label>
+                        <select name="product_color" id="theColorSpot">
 
-                <form>
-                <label for="quantity"><strong>Quantity :</strong></label>
-                <select name="quantity" id="qtyChoice">
+                        </select>        
+                    </form>
+                    <br>
 
-                </select>
-                </form>
+                    <form>
+                    <label for="quantity"><strong>Quantity :</strong></label>
+                    <select name="quantity" id="qtyChoice">
+
+                    </select>
+                    </form>
+                </div>
+                    <button id="addToCart" type="submit " name="ajouterToCart">Ajouter au panier</button>
             </div>
-                <button id="addToCart" type="submit " name="ajouterToCart">Ajouter au panier</button>
-        </div>
-        </div>
-        </div>
+            </div>
+            </div>
+            `;
+
+        const container = document.querySelector('.container');
+        container.innerHTML = productDetails;
+
+
+    ///***********************Set color options in dropdown*****************************
+
+        const colorOptions = coloris;
+        // console.log(colordropdwnQty);
+
+        let colorDropDownStructure = [];
+
+        for(let j = 0; j < colorOptions.length; j++) {
+
+            colorDropDownStructure = colorDropDownStructure + 
+                    `
+                    <option value="${colorOptions[j]}">${colorOptions[j]}</option>
+                    `;
+
+            // console.log(colorQtyStructure);
+        }
+
+        const colorSelection = document.querySelector('#theColorSpot');
+        colorSelection.innerHTML = colorDropDownStructure;
+
+        // console.log(formSelect);
+
+
+        //***********************Quantity structure*********************************** 
+        const qtyChoice = document.querySelector("#qtyChoice");
+
+        const qtyStructure = `
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
         `;
 
-    const container = document.querySelector('.container');
-    container.innerHTML = productDetails;
+        qtyChoice.innerHTML = qtyStructure;
 
 
-///***********************Set Quantity of color choices in the dropdown*****************************
+    //**********************************ADDING PRODUCTS TO CART***************************************
 
-    const colordropdwnQty = coloris;
-    // console.log(colordropdwnQty);
+        const colorName = document.querySelector("#theColorSpot");
 
-    let colorQtyStructure = [];
+        ///....selection btn "Add to cart"........//////..........//...
+        const btnAddToCart = document.querySelector("#addToCart");
 
-    for(let j = 0; j < colordropdwnQty.length; j++) {
-
-        colorQtyStructure = 
-        colorQtyStructure + 
-                `
-                <option value="${colordropdwnQty[j]}">${colordropdwnQty[j]}</option>
-                `;
-
-        // console.log(colorQtyStructure);
-    }
-
-    const formSelect = document.querySelector('#theColorSpot');
-    formSelect.innerHTML = colorQtyStructure;
-
-    // console.log(formSelect);
-
-
-    //....Quantity.structure.........................////............ 
-    const containerOfQtyStructure = document.querySelector("#qtyChoice");
-
-    const qtyStructure = `
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    `;
-
-    containerOfQtyStructure.innerHTML = qtyStructure;
-
-
-//**********************************ADDING PRODUCTS TO CART***************************************
-
-    const formName = document.querySelector("#theColorSpot");
-
-    ///....selection btn "Add to cart"........//////..........//...
-    const btnSendSelection = document.querySelector("#addToCart");
-
-    btnSendSelection.addEventListener("click", (e) => {
+        btnAddToCart.addEventListener("click", (e) => {
         e.preventDefault();
 
             ///....Customer's color selection.......///////......
-            const clientColorChoice = formName.value;
+            const clientColorChoice = colorName.value;
             console.log(clientColorChoice);
 
             //....Customer's Quantity selection.......///////......
-            const quantityChoice = containerOfQtyStructure.value;
+            const quantityChoice = qtyChoice.value;
             console.log(quantityChoice);
 
             //.... Data elements to be retrieved from the form for confirmation........//////.......///
@@ -127,9 +127,10 @@ fetchedStream.then((response) => response.json())
                 Price: prodPrice,
                 sub_total: quantityChoice * prodPrice
             };
+
             // console.log(sub_total);
 
-            ///...Setting up function of the "put in the cart" popup... this function is called below in the "If ()".
+            ///...Setting up function of the "put in cart" popup... this function is called below in the "If ()".
             const confirmationMessage = () => {
                 if (window.confirm(`           ${name} has been added to your cart. 
                 Press OK to view cart details or Cancel to continue shopping`)) {
@@ -138,38 +139,78 @@ fetchedStream.then((response) => response.json())
                     window.location.href = "product-list.html";
                 }
             }
-
-            /////....Transfer selected product data from form/btn to local storage (this must be in a variable)...../////....///./////...
-            ////But first we must check if a copy of the data is not already in the local Storage (using the Boolean effect - if there is somthing, it will return "true").
-            /// RULE... Arr/Obj---> thru--JSON.stringify---> to transfer data into local Storage.
-            /// RULE... local Storage---> thru--JSON.parse---> to get Arr/Obj from local Storage.
             
             //Creation of variable in which the selected keys and values will be inserted from the local storage.  But if there's nothing in the local storage, an array (see in argument "else" below) will be initiated in order to receive new prodct selections.
             let productsInLocalStorage = JSON.parse(localStorage.getItem("products"));
-            // console.log(prodToLocalStorage);
 
-            // Function to add selected product(s) to local storage
-            const addProdToLocalStorage = () => {
-                //...add product details to the variable storsgre..
-                productsInLocalStorage.push(prodDetails);
-                //.....Setup to send variable storage to "key" (products) of the local storage.....
-                localStorage.setItem("products", JSON.stringify(productsInLocalStorage));
-            };
+             /////....Transfer selected product data from form/btn to local storage (this must be in a variable)...../////....///./////...
+            ////But first we must check if a copy of the data is not already in the local Storage (using the Boolean effect - if there is somthing, it will return "true").
+            if (productsInLocalStorage == null || productsInLocalStorage == 0) {
             
-                //..if there are items in the local storage. 
-                if(productsInLocalStorage) {   
-                    addProdToLocalStorage();
-                    confirmationMessage ();
+                // Function to add selected product(s) to local storage
+                const addProdToLocalStorage = () => {
+                    //...add product details to the variable storsgre..
+                    productsInLocalStorage.push(prodDetails);
+                    //.....Setup to send variable storage to "key" (products) of the local storage.....
+                    localStorage.setItem("products", JSON.stringify(productsInLocalStorage));
+                };
+                
+                    //..if there are items in the local storage.
+                    if(productsInLocalStorage) {   
+                        addProdToLocalStorage();
+                        confirmationMessage ();
 
-                //..if there are no item in the local storage. 
-                } else {
-                    productsInLocalStorage = [];
-                    addProdToLocalStorage();
-                    confirmationMessage ();
-                }
+                    //..if there are no item in the local storage. 
+                    } else {
+                        productsInLocalStorage = [];
+                        addProdToLocalStorage();
+                        confirmationMessage ();
+                    }
+
+            } else {
+                    //...Check in LS if the product with combo 'ID and Color' is already present 
+                    const duplicateFound = productsInLocalStorage.find(element => element.productId == prodID && element.product_color == clientColorChoice);
+                    console.log(duplicateFound);
+                    
+                    if (duplicateFound) {
+                        console.log('Already in cart');
+                        //..If product is present in LS, appliquer filtre par pair Index/ID, Index/name et Index/color and put in variable
+                        const newProductsInLocalStorage = productsInLocalStorage.filter((index) => index.productId !== prodID || index.name !== name || index.product_color !== clientColorChoice);
+                        
+                        //...push product-detail template into the new data filter structure....
+                        newProductsInLocalStorage.push(prodDetails);
+
+                        //.....Send variable of new filtered structure to "key" (products) of the local storage.....
+                        localStorage.setItem("products", JSON.stringify(newProductsInLocalStorage));
+
+                    } else {
+                        // Function to add selected product(s) to local storage
+                        const addProdToLocalStorage = () => {
+                            //...add product details to the variable storsgre..
+                            productsInLocalStorage.push(prodDetails);
+                            // console.log(quantityChoice);
+                            //....send variable storage to "key" (products) of the local storage.....
+                            localStorage.setItem("products", JSON.stringify(productsInLocalStorage));
+                            };
+                        
+                            //..if there are items in the local storage.
+                            if(productsInLocalStorage) {   
+                                addProdToLocalStorage();
+                                confirmationMessage ();
+
+                            //..if there are no item in the local storage. 
+                            } else {
+                                productsInLocalStorage = [];
+                                addProdToLocalStorage();
+                                confirmationMessage ();
+                            }
+                        }
+                    
+            }
+        });
+        
+
     });
-
-});
 
 }
 recupProductIdAndDisplayProductDetails();

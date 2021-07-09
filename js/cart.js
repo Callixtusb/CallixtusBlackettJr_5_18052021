@@ -371,69 +371,73 @@ function validateUserInput() {
             localStorage.setItem("contact", JSON.stringify(contact));
 
 
+            if (!productsInLocalStorage) {
+                alert('Votre panier est vide.')
 
-            //************************BUILD OBJECT OF PRODUCT & CONTACT ORDER INFORMATION*******************************************/
-            const infoToSendToServer = {
-            
-                contact : {   
-                firstName: document.querySelector("#firstName").value,
-                lastName: document.querySelector("#lastName").value,
-                address: document.querySelector("#address").value,
-                city: document.querySelector("#city").value,
-                email: document.querySelector("#email").value
-                },
-    
-                products : []
-            };
-    
-            let productIDs = JSON.parse(localStorage.getItem("products"));
-                productIDs.forEach(objectTeddies => { 
-                infoToSendToServer.products.push(objectTeddies.productId);
-            });
-            console.log(infoToSendToServer);  
-            
-            //...Sending product and user data to server.......
-            let sendToServer = fetch('http://localhost:3000/api/teddies/order', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                mode:'cors',
-                body: JSON.stringify(infoToSendToServer)
-            });
-                    //...View response from server.......
-                    sendToServer.then(async(response)=>{
-                        try{
-                            const content = await response.json();
-                            console.log("content from server:");
-                            console.log(content);
-                            console.log(response);
-    
-                            if(response.ok) {
-                                console.log(`Results of response.ok : ${response.ok}`);
-    
-                                //..Get Order Id...
-                                console.log("Order Id from server :");
-                                console.log(content.orderId);
-    
-                                //..Put Order Id in the local storage...
-                                localStorage.setItem("orderId", content.orderId);
-    
-                                //..Go to confirmation page...
-                                window.location.href = "confirmation.html";
-    
-                            }else {
-                                console.log(`Response status : ${response.status}`);
-                                alert(`Problem with the server : ${response.status}`);
-                            };
-    
-    
-                        }catch(e){
-                            console.log(e);
-                        }
-                    })
-            // ******************************************************************************************************
-            
+                } else {
+                //************************BUILD OBJECT OF PRODUCT & CONTACT ORDER INFORMATION*******************************************/
+                const infoToSendToServer = {
+                
+                    contact : {   
+                    firstName: document.querySelector("#firstName").value,
+                    lastName: document.querySelector("#lastName").value,
+                    address: document.querySelector("#address").value,
+                    city: document.querySelector("#city").value,
+                    email: document.querySelector("#email").value
+                    },
+        
+                    products : []
+                };
+        
+                let productIDs = JSON.parse(localStorage.getItem("products"));
+                    productIDs.forEach(objectTeddies => { 
+                    infoToSendToServer.products.push(objectTeddies.productId);
+                });
+                console.log(infoToSendToServer);  
+                
+                //...Sending product and user data to server.......
+                let sendToServer = fetch('http://localhost:3000/api/teddies/order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    mode:'cors',
+                    body: JSON.stringify(infoToSendToServer)
+                });
+                        //...View response from server.......
+                        sendToServer.then(async(response)=>{
+                            try{
+                                const content = await response.json();
+                                console.log("content from server:");
+                                console.log(content);
+                                console.log(response);
+        
+                                if(response.ok) {
+                                    console.log(`Results of response.ok : ${response.ok}`);
+        
+                                    //..Get Order Id...
+                                    console.log("Order Id from server :");
+                                    console.log(content.orderId);
+        
+                                    //..Put Order Id in the local storage...
+                                    localStorage.setItem("orderId", content.orderId);
+        
+                                    //..Go to confirmation page...
+                                    window.location.href = "confirmation.html";
+        
+                                }else {
+                                    console.log(`Response status : ${response.status}`);
+                                    alert(`Problem with the server : ${response.status}`);
+                                };
+        
+        
+                            }catch(e){
+                                console.log(e);
+                            }
+                        })
+                // ******************************************************************************************************
+                }
+
             }else{
                 alert("Veuillez revoir et corriger votre saisi.");
             }

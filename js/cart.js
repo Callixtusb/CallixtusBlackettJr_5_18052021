@@ -370,7 +370,7 @@ function validateUserInput() {
             //..Sending the input data to the local storage if argument "if" returns "true":
             localStorage.setItem("contact", JSON.stringify(contact));
 
-
+            //... Alert si panier est vide avant d envoyer user data to server
             if (!productsInLocalStorage) {
                 alert('Votre panier est vide.')
 

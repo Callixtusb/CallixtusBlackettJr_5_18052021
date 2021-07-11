@@ -107,3 +107,39 @@ function orderConfirmation () {
     orderInfo.insertAdjacentHTML("afterbegin", pageStructure);
 }
 orderConfirmation();
+
+
+
+function epmtyCartAfterClickingAccueil() {
+
+    const btnAccueil = document.querySelector(".menu__home");
+
+    btnAccueil.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        localStorage.removeItem('products');
+        localStorage.removeItem('orderId');
+
+        window.location.href = "index.html";
+
+    });
+};
+epmtyCartAfterClickingAccueil ();
+
+
+
+function epmtyCartAfterClickingProduits() {
+
+    const btnProduits = document.querySelector(".menu__produits");
+
+    btnProduits.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        localStorage.removeItem('products');
+        localStorage.removeItem('orderId');
+
+        window.location.href = "product-list.html";
+
+    });
+};
+epmtyCartAfterClickingProduits ();
